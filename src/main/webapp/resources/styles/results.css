@@ -1,0 +1,83 @@
+th {
+    color: white;
+    text-align: center;
+}
+
+td {
+    color: white;
+    vertical-align: middle;
+}
+
+td.centered, th.centered{
+    text-align:center;
+    vertical-align: middle;
+}
+
+td.vertical-centered{
+    vertical-align: middle;
+}
+
+td.times{
+    text-align: right;
+    vertical-align: middle;
+}
+
+
+table {
+    background-color: rgba(0, 0, 0, 0.65);
+}
+
+.table-hover tbody tr.no-hover {
+    background-color:transparent !important;
+}
+
+.table-hover tbody tr td:hover {
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+.table-hover tbody tr th.hover:hover {
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+.segment-time{
+    background-color: #ebe654;
+    color: black;
+    text-align: right;
+}
+
+.segment-position{
+    background-color: #eed611;
+    color: black;
+    text-align: center;
+}
+
+.cumul-time{
+    background-color: #22e6de;
+    color: black;
+    text-align: right;
+}
+
+.cumul-position{
+    background-color: #17b9e2;
+    color: black;
+    text-align: center;
+}
+
+div.custom-control {
+    padding-left: 1em;
+}
+
+
+.table-striped td {
+    text-align: center;
+}
+
+.place {
+    color: rgba(0, 0, 0, 0);
+}
+
+.analyse-result {
+    color: black;
+    text-align: center;
+}
+
