@@ -39,7 +39,7 @@
             if (analyse1Items.length === 0 || analyse2Items.length === 0) {
                 $('.toast-failure').toast('show');
             } else {
-                location.href = 'analyse?competitionId=' + '${competition.id}' +
+                location.href = 'analyse?competitionId=' + '${model.competition.id}' +
                     '\&firstGroup=' + analyse1Items.toString() + '\&secondGroup=' + analyse2Items.toString();
 
                 analyse1Items = [];
@@ -68,7 +68,7 @@
         <div class="col">
             <div class="row justify-content-center">
                 <div class="card">
-                    <h1 class="text-center m-2">${competition.name}</h1>
+                    <h1 class="text-center m-2">${model.competition.name}</h1>
                 </div>
             </div>
             <br>
@@ -96,11 +96,11 @@
                         <th class="centered">total</th>
                         <th class="centered">delay</th>
                         <th class="centered">result</th>
-                        <c:forEach items="${segments}" var="segment">
+                        <c:forEach items="${model.segments}" var="segment">
                             <th class="centered" colspan="2">${segment.name}</th>
                         </c:forEach>
                     </tr>
-                    <c:forEach items="${resultRows.rowsView}" var="row" varStatus="status">
+                    <c:forEach items="${model.resultRows.rowsView}" var="row" varStatus="status">
                         <div class="row">
                             <tr>
                                 <td class="centered" rowspan="2">

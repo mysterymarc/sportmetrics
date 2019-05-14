@@ -19,7 +19,7 @@ public class ResultsForRunnersGroupFactory {
     @Autowired
     private PartialResultRepository partialResultRepository;
 
-    public ResultsForRunnersGroup createUsingTotalResultId(List<String> totalResultIds) {
+    public ResultsForRunnersGroup getObject(List<String> totalResultIds) {
 
         ResultsForRunnersGroup resultsForRunnersGroup = new ResultsForRunnersGroup();
 
@@ -31,7 +31,7 @@ public class ResultsForRunnersGroupFactory {
         return resultsForRunnersGroup;
     }
 
-    public ResultsForRunnersGroup createUsingCompetitionId(Long competitionId) {
+    public ResultsForRunnersGroup getObject(Long competitionId) {
 
         List<TotalResult> totalResults = totalResultRepository.findByCompetitionId(competitionId);
 

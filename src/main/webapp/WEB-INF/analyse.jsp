@@ -30,7 +30,7 @@
 
             var cells = document.getElementsByClassName(cellClassName);
 
-            <c:forEach items="${avgAnalysis}" var="group" varStatus="grouploop">
+            <c:forEach items="${model.avgAnalysis}" var="group" varStatus="grouploop">
             <c:forEach items="${group}" var="row" varStatus="rowloop">
             <c:forEach items="${row.segmentResults}" var="single" varStatus="celloop">
             cells[${grouploop.index*fn:length(row.segmentResults)}+${rowloop.index*fn:length(row.segmentResults)}+${celloop.index}]
@@ -49,14 +49,14 @@
             <br>
             <div class="row justify-content-center">
                 <div class="card">
-                    <h1 class="text-center m-2">${competition.name}</h1>
+                    <h1 class="text-center m-2">${model.competition.name}</h1>
                 </div>
             </div>
             <br>
             <div class="col-2">
                 <table class="table table-bordered table-hover table-condensed table-sm">
                     <tr class="no-hover">
-                        <th class="hover" onclick="location.href='results?competition_id=' + ${competition.id};">
+                        <th class="hover" onclick="location.href='results?competition_id=' + ${model.competition.id};">
                             << BACK TO EVENT RESULTS
                         </th>
                     </tr>
@@ -65,7 +65,7 @@
 
             <div class="col">
                 <table class="table table-bordered table-condensed table-sm">
-                    <c:forEach items="${results.rowsGroupsView}" var="group" varStatus="grouploop">
+                    <c:forEach items="${model.results.rowsGroupsView}" var="group" varStatus="grouploop">
                         <tr>
                             <th colspan="100%">Results for Group ${grouploop.count}</th>
                         </tr>
@@ -76,7 +76,7 @@
                             <th class="centered">total</th>
                             <th class="centered">delay</th>
                             <th class="centered">result</th>
-                            <c:forEach items="${segments}" var="segment">
+                            <c:forEach items="${model.segments}" var="segment">
                                 <th class="centered" colspan="2">${segment.name}</th>
                             </c:forEach>
                         </tr>
@@ -103,7 +103,7 @@
                         </c:forEach>
                     </c:forEach>
 
-                    <c:forEach items="${avgAnalysis}" var="group" varStatus="rowloop">
+                    <c:forEach items="${model.avgAnalysis}" var="group" varStatus="rowloop">
                         <tr>
                             <th class="centered" colspan="100%">Statistics for Group ${rowloop.count}</th>
                         </tr>

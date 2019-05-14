@@ -6,7 +6,7 @@ import java.util.List;
 
 public class SegmentsStatisticsGroupsCollection implements Iterable<SegmentsStatisticsGroup> {
 
-    List<SegmentsStatisticsGroup> segmentsStatisticsGroups = new ArrayList<SegmentsStatisticsGroup>();
+    private List<SegmentsStatisticsGroup> segmentsStatisticsGroups = new ArrayList<SegmentsStatisticsGroup>();
 
     public boolean add(SegmentsStatisticsGroup rowsGroup){
         return segmentsStatisticsGroups.add(rowsGroup);

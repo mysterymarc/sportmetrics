@@ -4,7 +4,7 @@ import pl.mm.sportmetrics.statistics.Calculation;
 
 public class SegmentsStatisticsGroupFactory {
 
-    public SegmentsStatisticsGroup create(ResultsForRunnersGroup resultsForRunnersGroup){
+    public SegmentsStatisticsGroup getObject(ResultsForRunnersGroup resultsForRunnersGroup){
 
         SegmentsStatisticsGroup rowsGroup = new SegmentsStatisticsGroup();
         rowsGroup.add(new Calculation().getAvgFromResults(resultsForRunnersGroup));
