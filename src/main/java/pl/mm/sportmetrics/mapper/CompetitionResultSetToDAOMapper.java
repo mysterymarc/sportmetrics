@@ -5,6 +5,7 @@ import pl.mm.sportmetrics.model.database.*;
 import pl.mm.sportmetrics.model.inputfile.AtomResult;
 import pl.mm.sportmetrics.model.inputfile.CompetitionResultSet;
 import pl.mm.sportmetrics.model.inputfile.SingleResultSet;
+import pl.mm.sportmetrics.model.repo.Segments;
 
 import java.sql.Time;
 import java.time.Duration;
@@ -15,14 +16,14 @@ public class CompetitionResultSetToDAOMapper {
 
     public Competition competition;
     public List<Competitor> competitors;
-    public List<Segment> segments;
+    public Segments segments;
     public List<TotalResult> totalResults;
     public List<PartialResult> partialResults;
 
     public CompetitionResultSetToDAOMapper() {
         competition = new Competition();
         competitors = new ArrayList<>();
-        segments = new ArrayList<>();
+        segments = new Segments();
         totalResults = new ArrayList<>();
         partialResults = new ArrayList<>();
     }
@@ -55,9 +56,9 @@ public class CompetitionResultSetToDAOMapper {
             totalResults.add(tmpTotal);
 
 
-            for (int i = 0; i < segments.size(); i++) {
+            for (int i = 0; i < segments.getSegments().size(); i++) {
                 PartialResult tmpPartial = new PartialResult();
-                tmpPartial.segment = segments.get(i);
+                tmpPartial.segment = segments.getSegments().get(i);
                 tmpPartial.segmentPosition = set.segmentResults.get(i).position;
                 tmpPartial.segmentTime = parseTime(set.segmentResults.get(i).time);
                 tmpPartial.cumulativePosition = set.cumulativeResults.get(i).position;
@@ -68,6 +69,8 @@ public class CompetitionResultSetToDAOMapper {
 
         }
     }
+
+
 
     // TODO: to wygląda dość mocno hackowato, może się nie dać inaczej ale pomyśl coś w deseń https://stackoverflow.com/questions/6403851/parsing-time-strings-like-1h-30min
     private Time parseTime(String time){

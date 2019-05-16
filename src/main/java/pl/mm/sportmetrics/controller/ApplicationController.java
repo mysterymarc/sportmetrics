@@ -25,7 +25,7 @@ import java.util.List;
 
 
 @Controller
-public class FirstController {
+public class ApplicationController {
 
     @Autowired
     private RepositoryService repositoryService;

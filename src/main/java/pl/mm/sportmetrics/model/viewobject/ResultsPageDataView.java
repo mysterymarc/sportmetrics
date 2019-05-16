@@ -2,13 +2,14 @@ package pl.mm.sportmetrics.model.viewobject;
 
 import pl.mm.sportmetrics.model.database.Competition;
 import pl.mm.sportmetrics.model.database.Segment;
+import pl.mm.sportmetrics.model.repo.Segments;
 
 import java.util.List;
 
 public class ResultsPageDataView {
 
     Competition competition;
-    List<Segment> segments;
+    Segments segments;
     RowResultsGroupView resultRows;
 
     public Competition getCompetition() {
@@ -19,11 +20,11 @@ public class ResultsPageDataView {
         this.competition = competition;
     }
 
-    public List<Segment> getSegments() {
+    public Segments getSegments() {
         return segments;
     }
 
-    public void setSegments(List<Segment> segments) {
+    public void setSegments(Segments segments) {
         this.segments = segments;
     }
 

@@ -34,7 +34,7 @@ public class AnalysisService {
         viewData.setCompetition(competition.orElseThrow(() ->
                 new IllegalArgumentException("Repository doesn't return result for competition id=" + competitionId)));
 
-        List<Segment> segments = repositoryService.getSegments(Long.valueOf(competitionId));
+        Segments segments = repositoryService.getSegments(Long.valueOf(competitionId));
         viewData.setSegments(segments);
 
 

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import pl.mm.sportmetrics.model.database.*;
 import pl.mm.sportmetrics.model.repo.ResultsForRunnersGroupFactory;
+import pl.mm.sportmetrics.model.repo.Segments;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,8 +34,8 @@ public class RepositoryService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public List<Segment> getSegments(Long competitionId){
-        return segmentRepository.findByCompetitionId(competitionId);
+    public Segments getSegments(Long competitionId){
+        return new Segments(segmentRepository.findByCompetitionId(competitionId));
     }
 
     public Optional<Competition> getCompetition(Long id){
@@ -51,8 +52,8 @@ public class RepositoryService {
         competitionRepository.save(competition);
     }
 
-    public void saveSegments(List<Segment> segments){
-        segmentRepository.saveAll(segments);
+    public void saveSegments(Segments segments){
+        segmentRepository.saveAll(segments.getSegments());
     }
 
     public void saveCompetitors(List<Competitor> competitors){

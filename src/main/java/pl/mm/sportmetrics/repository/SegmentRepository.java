@@ -5,6 +5,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 import pl.mm.sportmetrics.model.database.Competition;
 import pl.mm.sportmetrics.model.database.Segment;
+import pl.mm.sportmetrics.model.repo.Segments;
 
 import java.util.List;
 

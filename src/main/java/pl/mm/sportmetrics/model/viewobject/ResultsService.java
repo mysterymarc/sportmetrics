@@ -9,6 +9,7 @@ import pl.mm.sportmetrics.model.database.Competition;
 import pl.mm.sportmetrics.model.database.Segment;
 import pl.mm.sportmetrics.model.repo.ResultsForRunnersGroup;
 import pl.mm.sportmetrics.model.repo.ResultsForRunnersGroupFactory;
+import pl.mm.sportmetrics.model.repo.Segments;
 import pl.mm.sportmetrics.repository.RepositoryService;
 
 import java.util.List;
@@ -28,13 +29,23 @@ public class ResultsService {
 
      ResultsPageDataView results = new ResultsPageDataView();
 
-     Optional<Competition> competition = repositoryService.getCompetition(competitionId);
-     results.setCompetition(competition.orElseThrow(() ->
-             new IllegalArgumentException("Repository doesn't return result for competition id=" + competitionId)));
+     results.setCompetition(getCompetition(competitionId));
+     results.setSegments(getSegments(competitionId));
+     results.setResultRows(getResults(competitionId));
 
-     List<Segment> segments = repositoryService.getSegments(Long.valueOf(competitionId));
-     results.setSegments(segments);
+     return results;
+ }
 
+ private Competition getCompetition(Long competitionId){
+     return repositoryService.getCompetition(competitionId).orElseThrow(() ->
+             new IllegalArgumentException("Repository doesn't return result for competition id=" + competitionId));
+ }
+
+ private Segments getSegments(Long competitionId){
+     return repositoryService.getSegments(competitionId);
+ }
+
+ private RowResultsGroupView getResults(Long competitionId){
      ResultsForRunnersGroup resultsForRunnersGroup = resultsForRunnersGroupFactory.getObject(competitionId);
 
      RowResultsGroupView detailResultRowForGroups;
@@ -43,9 +54,6 @@ public class ResultsService {
      mapper.doMapping(resultsForRunnersGroup);
      detailResultRowForGroups = mapper.getResultsMatrix();
 
-     results.setResultRows(detailResultRowForGroups);
-
-     return results;
+     return detailResultRowForGroups;
  }
-
 }
