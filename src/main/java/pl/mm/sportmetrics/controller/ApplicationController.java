@@ -51,20 +51,20 @@ public class ApplicationController {
     @PostMapping(value = "/uploadEventResults")
     public String controlFile(@RequestParam("file") MultipartFile jsonFile, Model model) {
         try {
-            if(importService.importFile(jsonFile)){
-                model.addAttribute("uploadResult","success");
-            }else{
-                model.addAttribute("uploadResult","failure");
+            if (importService.importFile(jsonFile)) {
+                model.addAttribute("uploadResult", "success");
+            } else {
+                model.addAttribute("uploadResult", "failure");
             }
-        } catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             logger.error(e.getMessage());
-            model.addAttribute("uploadResult","failure");
+            model.addAttribute("uploadResult", "failure");
         }
         return "addEvent";
     }
 
-    @GetMapping(value="/addEvent")
-    public String showAddEventPage(){
+    @GetMapping(value = "/addEvent")
+    public String showAddEventPage() {
         return "addEvent";
     }
 
@@ -76,9 +76,9 @@ public class ApplicationController {
 
     @GetMapping(value = "/results", params = "competition_id")
     public String returnResult(@RequestParam("competition_id") Long competitionId, Model model) {
-        try{
-            model.addAttribute("model",resultsService.getDataForView(competitionId));
-        } catch(IllegalArgumentException e){
+        try {
+            model.addAttribute("model", resultsService.getDataForView(competitionId));
+        } catch (IllegalArgumentException e) {
             logger.error(e.getMessage());
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Incorrect competitionId");
         }
@@ -87,14 +87,18 @@ public class ApplicationController {
 
     @GetMapping(value = "/analyse")
     public String analyseRequest(@RequestParam Long competitionId,
-                                 @RequestParam List<String> firstGroup,
-                                 @RequestParam List<String> secondGroup,
+                                 @RequestParam List<Long> firstGroup,
+                                 @RequestParam List<Long> secondGroup,
                                  Model model) {
 
         if (firstGroup.size() == 0) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Incorrect firstGroup");
         if (secondGroup.size() == 0) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Incorrect secondGroup");
 
-        model.addAttribute("model", analysisService.getDataForView(competitionId,firstGroup,secondGroup));
+        IdentifiersOfResultsGroupsCollection groupsCollection = new IdentifiersOfResultsGroupsCollection();
+        groupsCollection.add(firstGroup);
+        groupsCollection.add(secondGroup);
+
+        model.addAttribute("model", analysisService.getDataForView(competitionId, groupsCollection));
         return "analyse";
     }
 

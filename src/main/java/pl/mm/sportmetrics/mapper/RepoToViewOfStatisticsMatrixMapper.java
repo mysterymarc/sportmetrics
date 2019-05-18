@@ -5,6 +5,7 @@ import pl.mm.sportmetrics.model.repo.SegmentsStatistic;
 import pl.mm.sportmetrics.model.repo.SegmentsStatisticsGroup;
 import pl.mm.sportmetrics.model.viewobject.AnalysisResultForSegment;
 import pl.mm.sportmetrics.model.viewobject.AnalysisResultRow;
+import pl.mm.sportmetrics.model.viewobject.AnalysisResultsGroupView;
 
 import java.sql.Time;
 import java.util.ArrayList;
@@ -12,13 +13,9 @@ import java.util.List;
 
 public class RepoToViewOfStatisticsMatrixMapper {
 
-    private List<AnalysisResultRow> analysisRows;
+    private AnalysisResultsGroupView analysisRows = new AnalysisResultsGroupView();
 
-    public RepoToViewOfStatisticsMatrixMapper() {
-        this.analysisRows = new ArrayList<>();
-    }
-
-    public List<AnalysisResultRow> getResultsMatrix() {
+    public AnalysisResultsGroupView getResultsMatrix() {
         return analysisRows;
     }
 

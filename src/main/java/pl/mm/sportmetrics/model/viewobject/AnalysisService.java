@@ -12,9 +12,6 @@ import pl.mm.sportmetrics.model.repo.*;
 import pl.mm.sportmetrics.repository.RepositoryService;
 import pl.mm.sportmetrics.statistics.Calculation;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class AnalysisService {
@@ -26,51 +23,63 @@ public class AnalysisService {
     @Autowired
     private ResultsForRunnersGroupFactory resultsForRunnersGroupFactory;
 
-    public AnalysisPageDataView getDataForView(Long competitionId, List<String> firstGroup, List<String> secondGroup) {
+    public AnalysisPageDataView getDataForView(Long competitionId, IdentifiersOfResultsGroupsCollection identifiersGroupsCollection) {
+
+        ResultsForRunnersGroupsCollection resultsForRunnersGroupsCollection =
+                getResultsForSpecifiedGroupFromModel(identifiersGroupsCollection);
 
         AnalysisPageDataView viewData = new AnalysisPageDataView();
+        viewData.setCompetition(getCompetition(competitionId));
+        viewData.setSegments(getSegments(competitionId));
+        viewData.setResults(getResults(resultsForRunnersGroupsCollection));
+        viewData.setAvgAnalysis(getAnalyses(resultsForRunnersGroupsCollection));
 
-        Optional<Competition> competition = repositoryService.getCompetition(competitionId);
-        viewData.setCompetition(competition.orElseThrow(() ->
-                new IllegalArgumentException("Repository doesn't return result for competition id=" + competitionId)));
+        return viewData;
+    }
 
-        Segments segments = repositoryService.getSegments(Long.valueOf(competitionId));
-        viewData.setSegments(segments);
+    private ResultsForRunnersGroupsCollection getResultsForSpecifiedGroupFromModel(IdentifiersOfResultsGroupsCollection identifiersGroupsCollection) {
 
+        ResultsForRunnersGroupsCollection resultsForRunnersGroupsCollection = new ResultsForRunnersGroupsCollection();
 
-        List<List<String>> resultIdsForGroups = new ArrayList<>();
-        resultIdsForGroups.add(firstGroup);
-        resultIdsForGroups.add(secondGroup);
+        identifiersGroupsCollection.forEach(collection ->
+                resultsForRunnersGroupsCollection.add(resultsForRunnersGroupFactory.getObject(collection.getIdentifiers())));
 
+        return resultsForRunnersGroupsCollection;
+    }
+
+    private Competition getCompetition(Long competitionId) {
+        return repositoryService.getCompetition(competitionId).orElseThrow(() ->
+                new IllegalArgumentException("Repository doesn't return result for competition id=" + competitionId));
+    }
+
+    private Segments getSegments(Long competitionId) {
+        return repositoryService.getSegments(competitionId);
+    }
+
+    private RowResultsGroupsColletionView getResults(ResultsForRunnersGroupsCollection resultsGroupsCollection) {
 
         // TODO: model + coś co ten model buduje i zwraca (zwykle to by się nazywało Repository... ale z tym jest zamota
         // bo już masz Repository służące za DAO)
         // -> https://stackoverflow.com/questions/8550124/what-is-the-difference-between-dao-and-repository-patterns
         // -> https://blog.sapiensworks.com/post/2012/11/01/Repository-vs-DAO.aspx
 
-        ResultsForRunnersGroupsCollection resultsForRunnersGroupsCollection = new ResultsForRunnersGroupsCollection();
-
-        for (List<String> resultIds : resultIdsForGroups) {
-            resultsForRunnersGroupsCollection.add(resultsForRunnersGroupFactory.getObject(resultIds));
-        }
-
 
         RowResultsGroupsColletionView detailResultRowForGroups = new RowResultsGroupsColletionView();
 
-        for (ResultsForRunnersGroup group : resultsForRunnersGroupsCollection) {
+        for (ResultsForRunnersGroup group : resultsGroupsCollection) {
             RepoToViewOfResultsMatrixMapper mapper = new RepoToViewOfResultsMatrixMapper();
             mapper.doMapping(group);
             detailResultRowForGroups.add(mapper.getResultsMatrix());
         }
 
+        return detailResultRowForGroups;
+    }
 
-        viewData.setResults(detailResultRowForGroups);
-
+    private AnalysisResultsGroupsCollectionView getAnalyses(ResultsForRunnersGroupsCollection resultsGroupsCollection) {
         SegmentsStatisticsGroupsCollection segmentsStatisticsGroupsCollection = new SegmentsStatisticsGroupsCollection();
         SegmentsStatisticsGroupFactory segmentsStatisticsGroupFactory = new SegmentsStatisticsGroupFactory();
 
-
-        for (ResultsForRunnersGroup group : resultsForRunnersGroupsCollection) {
+        for (ResultsForRunnersGroup group : resultsGroupsCollection) {
             segmentsStatisticsGroupsCollection.add(segmentsStatisticsGroupFactory.getObject(group));
         }
 
@@ -78,8 +87,7 @@ public class AnalysisService {
                 segmentsStatisticsGroupsCollection.getGroup(0).getRow(0),
                 segmentsStatisticsGroupsCollection.getGroup(1).getRow(0));
 
-
-        List<List<AnalysisResultRow>> detailAnalysisRowForGroups = new ArrayList<>();
+        AnalysisResultsGroupsCollectionView detailAnalysisRowForGroups = new AnalysisResultsGroupsCollectionView();
 
         for (SegmentsStatisticsGroup group : segmentsStatisticsGroupsCollection) {
             RepoToViewOfStatisticsMatrixMapper mapper = new RepoToViewOfStatisticsMatrixMapper();
@@ -87,9 +95,6 @@ public class AnalysisService {
             detailAnalysisRowForGroups.add(mapper.getResultsMatrix());
         }
 
-        viewData.setAvgAnalysis(detailAnalysisRowForGroups);
-
-        return viewData;
+        return detailAnalysisRowForGroups;
     }
-
 }

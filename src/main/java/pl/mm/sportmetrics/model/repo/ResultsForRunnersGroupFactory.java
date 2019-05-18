@@ -19,12 +19,12 @@ public class ResultsForRunnersGroupFactory {
     @Autowired
     private PartialResultRepository partialResultRepository;
 
-    public ResultsForRunnersGroup getObject(List<String> totalResultIds) {
+    public ResultsForRunnersGroup getObject(List<Long> totalResultIds) {
 
         ResultsForRunnersGroup resultsForRunnersGroup = new ResultsForRunnersGroup();
 
-            for (String totalResultId : totalResultIds) {
-                TotalResult totalResult = totalResultRepository.findById(Long.valueOf(totalResultId)).orElse(null);
+            for (Long totalResultId : totalResultIds) {
+                TotalResult totalResult = totalResultRepository.findById(totalResultId).orElse(null);
                 resultsForRunnersGroup.add(prepareScoreRow(totalResult));
             }
 

@@ -30,8 +30,8 @@
 
             var cells = document.getElementsByClassName(cellClassName);
 
-            <c:forEach items="${model.avgAnalysis}" var="group" varStatus="grouploop">
-            <c:forEach items="${group}" var="row" varStatus="rowloop">
+            <c:forEach items="${model.avgAnalysis.analysesGroup}" var="group" varStatus="grouploop">
+            <c:forEach items="${group.analyses}" var="row" varStatus="rowloop">
             <c:forEach items="${row.segmentResults}" var="single" varStatus="celloop">
             cells[${grouploop.index*fn:length(row.segmentResults)}+${rowloop.index*fn:length(row.segmentResults)}+${celloop.index}]
                 .setAttribute("bgcolor", getProperColor('${single.valueAttribute}'));
@@ -103,11 +103,11 @@
                         </c:forEach>
                     </c:forEach>
 
-                    <c:forEach items="${model.avgAnalysis}" var="group" varStatus="rowloop">
+                    <c:forEach items="${model.avgAnalysis.analysesGroup}" var="group" varStatus="rowloop">
                         <tr>
                             <th class="centered" colspan="100%">Statistics for Group ${rowloop.count}</th>
                         </tr>
-                        <c:forEach items="${group}" var="row">
+                        <c:forEach items="${group.analyses}" var="row">
                             <tr>
                                 <td class="centered" colspan=6>${row.title}</td>
                                 <c:forEach items="${row.segmentResults}" var="single">

@@ -28,7 +28,6 @@ public class ResultsService {
  public ResultsPageDataView getDataForView(Long competitionId){
 
      ResultsPageDataView results = new ResultsPageDataView();
-
      results.setCompetition(getCompetition(competitionId));
      results.setSegments(getSegments(competitionId));
      results.setResultRows(getResults(competitionId));

@@ -4,14 +4,12 @@ import pl.mm.sportmetrics.model.database.Competition;
 import pl.mm.sportmetrics.model.database.Segment;
 import pl.mm.sportmetrics.model.repo.Segments;
 
-import java.util.List;
-
 public class AnalysisPageDataView {
 
     Competition competition;
     Segments segments;
     RowResultsGroupsColletionView results;
-    List<List<AnalysisResultRow>> avgAnalysis;
+    AnalysisResultsGroupsCollectionView avgAnalysis;
 
     public Competition getCompetition() {
         return competition;
@@ -37,11 +35,11 @@ public class AnalysisPageDataView {
         this.results = results;
     }
 
-    public List<List<AnalysisResultRow>> getAvgAnalysis() {
+    public AnalysisResultsGroupsCollectionView getAvgAnalysis() {
         return avgAnalysis;
     }
 
-    public void setAvgAnalysis(List<List<AnalysisResultRow>> avgAnalysis) {
+    public void setAvgAnalysis(AnalysisResultsGroupsCollectionView avgAnalysis) {
         this.avgAnalysis = avgAnalysis;
     }
 }
