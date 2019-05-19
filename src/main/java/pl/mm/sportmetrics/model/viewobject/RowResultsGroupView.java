@@ -1,7 +1,4 @@
 package pl.mm.sportmetrics.model.viewobject;
-
-import com.sun.rowset.internal.Row;
-
 import java.util.ArrayList;
 import java.util.List;
 
