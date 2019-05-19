@@ -21,7 +21,7 @@ import java.util.List;
 public class ApplicationController {
 
     @Autowired
-    private RepositoryService repositoryService;
+    private Repository repository;
 
     @Autowired
     private ResultsService resultsService;
@@ -44,7 +44,7 @@ public class ApplicationController {
     @PostMapping(value = "/uploadEventResults")
     public String controlFile(@RequestParam("file") MultipartFile jsonFile, Model model) {
         try {
-            if (importService.importFile(jsonFile)) {
+            if (importService.importExternalData(jsonFile)) {
                 model.addAttribute("uploadResult", "success");
             } else {
                 model.addAttribute("uploadResult", "failure");
@@ -63,7 +63,7 @@ public class ApplicationController {
 
     @GetMapping(value = "/events")
     public String eventList(Model model) {
-        model.addAttribute("competitions", repositoryService.getAllCompetitions());
+        model.addAttribute("competitions", repository.getAllCompetitions());
         return "allEvents";
     }
 

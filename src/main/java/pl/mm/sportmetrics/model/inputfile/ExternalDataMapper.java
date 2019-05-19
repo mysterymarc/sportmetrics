@@ -1,29 +1,23 @@
-package pl.mm.sportmetrics.mapper;
+package pl.mm.sportmetrics.model.inputfile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.web.multipart.MultipartFile;
-import pl.mm.sportmetrics.model.inputfile.CompetitionResultSet;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UncheckedIOException;
 
-public class JsonFileToCompetitionResultSetMapper {
+public class ExternalDataMapper {
 
-    public CompetitionResultSet doMapping(MultipartFile file) {
+    public EventDataCollection readJsonFile(MultipartFile file) {
 
-        CompetitionResultSet resSet;
-
+        EventDataCollection receivedEvent;
         try {
             InputStreamReader stream = new InputStreamReader(file.getInputStream(), "UTF-8");
-
-            ObjectMapper mapper = new ObjectMapper();
-
-            resSet = mapper.readValue(stream, CompetitionResultSet.class);
-
+            receivedEvent = new ObjectMapper().readValue(stream, EventDataCollection.class);
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
-        return resSet;
+        return receivedEvent;
     }
 }

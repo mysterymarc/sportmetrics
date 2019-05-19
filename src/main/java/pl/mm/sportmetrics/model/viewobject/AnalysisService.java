@@ -6,7 +6,7 @@ import pl.mm.sportmetrics.mapper.RepoToViewOfResultsMatrixMapper;
 import pl.mm.sportmetrics.mapper.RepoToViewOfStatisticsMatrixMapper;
 import pl.mm.sportmetrics.repository.entity.Competition;
 import pl.mm.sportmetrics.model.repo.*;
-import pl.mm.sportmetrics.repository.RepositoryService;
+import pl.mm.sportmetrics.repository.Repository;
 import pl.mm.sportmetrics.statistics.Calculation;
 
 
@@ -15,7 +15,7 @@ public class AnalysisService {
 
 
     @Autowired
-    private RepositoryService repositoryService;
+    private Repository repository;
 
     @Autowired
     private ResultsForRunnersGroupFactory resultsForRunnersGroupFactory;
@@ -45,21 +45,15 @@ public class AnalysisService {
     }
 
     private Competition getCompetition(Long competitionId) {
-        return repositoryService.getCompetition(competitionId).orElseThrow(() ->
+        return repository.getCompetition(competitionId).orElseThrow(() ->
                 new IllegalArgumentException("Repository doesn't return result for competition id=" + competitionId));
     }
 
     private Segments getSegments(Long competitionId) {
-        return repositoryService.getSegments(competitionId);
+        return repository.getSegments(competitionId);
     }
 
     private RowResultsGroupsColletionView getResults(ResultsForRunnersGroupsCollection resultsGroupsCollection) {
-
-        // TODO: model + coś co ten model buduje i zwraca (zwykle to by się nazywało Repository... ale z tym jest zamota
-        // bo już masz Repository służące za DAO)
-        // -> https://stackoverflow.com/questions/8550124/what-is-the-difference-between-dao-and-repository-patterns
-        // -> https://blog.sapiensworks.com/post/2012/11/01/Repository-vs-DAO.aspx
-
 
         RowResultsGroupsColletionView detailResultRowForGroups = new RowResultsGroupsColletionView();
 

@@ -4,7 +4,7 @@ import pl.mm.sportmetrics.model.repo.Segments;
 
 import java.util.List;
 
-public class CompetitionResultSet {
+public class EventDataCollection {
 
     public String name;
     public List<String> segments;

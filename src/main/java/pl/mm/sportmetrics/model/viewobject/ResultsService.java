@@ -7,14 +7,14 @@ import pl.mm.sportmetrics.repository.entity.Competition;
 import pl.mm.sportmetrics.model.repo.ResultsForRunnersGroup;
 import pl.mm.sportmetrics.model.repo.ResultsForRunnersGroupFactory;
 import pl.mm.sportmetrics.model.repo.Segments;
-import pl.mm.sportmetrics.repository.RepositoryService;
+import pl.mm.sportmetrics.repository.Repository;
 
 
 @Service
 public class ResultsService {
 
     @Autowired
-    private RepositoryService repositoryService;
+    private Repository repository;
 
     @Autowired
     private ResultsForRunnersGroupFactory resultsForRunnersGroupFactory;
@@ -30,12 +30,12 @@ public class ResultsService {
  }
 
  private Competition getCompetition(Long competitionId){
-     return repositoryService.getCompetition(competitionId).orElseThrow(() ->
+     return repository.getCompetition(competitionId).orElseThrow(() ->
              new IllegalArgumentException("Repository doesn't return result for competition id=" + competitionId));
  }
 
  private Segments getSegments(Long competitionId){
-     return repositoryService.getSegments(competitionId);
+     return repository.getSegments(competitionId);
  }
 
  private RowResultsGroupView getResults(Long competitionId){

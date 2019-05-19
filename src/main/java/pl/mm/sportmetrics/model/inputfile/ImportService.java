@@ -6,9 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import pl.mm.sportmetrics.mapper.CompetitionResultSetToDAOMapper;
-import pl.mm.sportmetrics.mapper.JsonFileToCompetitionResultSetMapper;
-import pl.mm.sportmetrics.repository.RepositoryService;
+import pl.mm.sportmetrics.repository.Repository;
 
 import java.io.UncheckedIOException;
 
@@ -16,22 +14,15 @@ import java.io.UncheckedIOException;
 public class ImportService {
 
     @Autowired
-    private RepositoryService repositoryService;
+    private Repository repository;
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public boolean importFile(MultipartFile jsonFile){
+    public boolean importExternalData(MultipartFile jsonFile){
 
         try {
-            CompetitionResultSet resSet = new JsonFileToCompetitionResultSetMapper().doMapping(jsonFile);
-
-            CompetitionResultSetToDAOMapper daoMapper = new CompetitionResultSetToDAOMapper();
-            daoMapper.doMapping(resSet);
-            repositoryService.saveCompetition(daoMapper.competition);
-            repositoryService.saveSegments(daoMapper.segments);
-            repositoryService.saveCompetitors(daoMapper.competitors);
-            repositoryService.saveTotalResults(daoMapper.totalResults);
-            repositoryService.savePartialResults(daoMapper.partialResults);
+            EventDataCollection receivedEvent = new ExternalDataMapper().readJsonFile(jsonFile);
+            repository.saveEventDataCollection(receivedEvent);
             return true;
         } catch (UncheckedIOException e){
             logger.error(e.getMessage(),e.fillInStackTrace());
