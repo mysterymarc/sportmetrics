@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.mm.sportmetrics.mapper.RepoToViewOfResultsMatrixMapper;
 import pl.mm.sportmetrics.mapper.RepoToViewOfStatisticsMatrixMapper;
-import pl.mm.sportmetrics.repository.entity.Competition;
 import pl.mm.sportmetrics.model.repo.*;
 import pl.mm.sportmetrics.repository.Repository;
 import pl.mm.sportmetrics.statistics.Calculation;
@@ -45,8 +44,7 @@ public class AnalysisService {
     }
 
     private Competition getCompetition(Long competitionId) {
-        return repository.getCompetition(competitionId).orElseThrow(() ->
-                new IllegalArgumentException("Repository doesn't return result for competition id=" + competitionId));
+        return repository.getCompetition(competitionId);
     }
 
     private Segments getSegments(Long competitionId) {

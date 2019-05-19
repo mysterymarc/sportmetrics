@@ -25,7 +25,7 @@
                 <th>SELECT EVENT</th>
                 <th class="hover" onclick="location.href='/addEvent'">&#10010; ADD EVENT</th>
             </tr>
-            <c:forEach items="${competitions}" var="competition" varStatus="status">
+            <c:forEach items="${competitions.competitions}" var="competition" varStatus="status">
                 <tr onclick="location.href='results?competition_id=' + ${competition.id};">
                     <td colspan="2">${competition.name}</td>
                 </tr>

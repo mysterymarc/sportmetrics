@@ -4,13 +4,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.mm.sportmetrics.model.repo.CompetitionsCollection;
 import pl.mm.sportmetrics.repository.entity.Event;
 import pl.mm.sportmetrics.model.inputfile.EventDataCollection;
 import pl.mm.sportmetrics.repository.dao.*;
 import pl.mm.sportmetrics.repository.entity.*;
 import pl.mm.sportmetrics.model.repo.Segments;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,17 +40,23 @@ public class Repository {
         return segments;
     }
 
-    public Optional<Competition> getCompetition(Long id){
-        return competitionDao.findById(id);
+    public pl.mm.sportmetrics.model.repo.Competition getCompetition(Long id){
+        return mapToModel(competitionDao.findById(id).orElseThrow(() ->
+                new IllegalArgumentException("Repository doesn't return result for competition id=" + id)));
     }
 
-    public List<Competition> getAllCompetitions(){
-        List<Competition> competitions = new ArrayList<Competition>();
-        competitionDao.findAll().forEach(competitions::add);
+    public CompetitionsCollection getAllCompetitions(){
+        CompetitionsCollection competitions = new CompetitionsCollection();
+        competitionDao.findAll().forEach(entity -> competitions.add(mapToModel(entity)));
         return competitions;
     }
 
-
+    private pl.mm.sportmetrics.model.repo.Competition mapToModel(Competition entity){
+        pl.mm.sportmetrics.model.repo.Competition competitionModel = new pl.mm.sportmetrics.model.repo.Competition();
+        competitionModel.id = entity.id;
+        competitionModel.name = entity.name;
+        return competitionModel;
+    }
 
     public void saveEventDataCollection(EventDataCollection eventData){
         Event mappedEvent = new EventFactory().getEvent(eventData);

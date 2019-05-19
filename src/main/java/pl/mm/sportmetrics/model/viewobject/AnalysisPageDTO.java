@@ -1,6 +1,6 @@
 package pl.mm.sportmetrics.model.viewobject;
 
-import pl.mm.sportmetrics.repository.entity.Competition;
+import pl.mm.sportmetrics.model.repo.Competition;
 import pl.mm.sportmetrics.model.repo.Segments;
 
 public class AnalysisPageDTO {
