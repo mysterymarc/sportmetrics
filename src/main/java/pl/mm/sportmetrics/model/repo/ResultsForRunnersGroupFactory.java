@@ -2,22 +2,22 @@ package pl.mm.sportmetrics.model.repo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.mm.sportmetrics.model.database.PartialResult;
-import pl.mm.sportmetrics.model.database.TotalResult;
+import pl.mm.sportmetrics.repository.entity.PartialResult;
+import pl.mm.sportmetrics.repository.entity.TotalResult;
 
 import java.util.List;
 
-import pl.mm.sportmetrics.repository.PartialResultRepository;
-import pl.mm.sportmetrics.repository.TotalResultRepository;
+import pl.mm.sportmetrics.repository.dao.PartialResultDAO;
+import pl.mm.sportmetrics.repository.dao.TotalResultDAO;
 
 @Service
 public class ResultsForRunnersGroupFactory {
 
     @Autowired
-    private TotalResultRepository totalResultRepository;
+    private TotalResultDAO totalResultRepository;
 
     @Autowired
-    private PartialResultRepository partialResultRepository;
+    private PartialResultDAO partialResultRepository;
 
     public ResultsForRunnersGroup getObject(List<Long> totalResultIds) {
 

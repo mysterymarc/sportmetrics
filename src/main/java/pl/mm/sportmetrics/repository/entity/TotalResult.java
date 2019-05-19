@@ -1,8 +1,7 @@
-package pl.mm.sportmetrics.model.database;
+package pl.mm.sportmetrics.repository.entity;
 
 import javax.persistence.*;
 import java.sql.Time;
-import java.time.Duration;
 
 @Entity
 @Table(name = "total_result")

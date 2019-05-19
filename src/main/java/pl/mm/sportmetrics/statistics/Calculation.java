@@ -1,6 +1,6 @@
 package pl.mm.sportmetrics.statistics;
 
-import pl.mm.sportmetrics.model.database.PartialResult;
+import pl.mm.sportmetrics.repository.entity.PartialResult;
 import pl.mm.sportmetrics.model.repo.*;
 
 import java.sql.Time;

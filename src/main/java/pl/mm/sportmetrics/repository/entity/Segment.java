@@ -1,4 +1,4 @@
-package pl.mm.sportmetrics.model.database;
+package pl.mm.sportmetrics.repository.entity;
 
 import javax.persistence.*;
 

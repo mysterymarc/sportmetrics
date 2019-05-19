@@ -1,12 +1,9 @@
 package pl.mm.sportmetrics.model.viewobject;
 
-import pl.mm.sportmetrics.model.database.Competition;
-import pl.mm.sportmetrics.model.database.Segment;
+import pl.mm.sportmetrics.repository.entity.Competition;
 import pl.mm.sportmetrics.model.repo.Segments;
 
-import java.util.List;
-
-public class ResultsPageDataView {
+public class ResultsPageDTO {
 
     Competition competition;
     Segments segments;

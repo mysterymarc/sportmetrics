@@ -1,15 +1,14 @@
 package pl.mm.sportmetrics.model.viewobject;
 
-import pl.mm.sportmetrics.model.database.Competition;
-import pl.mm.sportmetrics.model.database.Segment;
+import pl.mm.sportmetrics.repository.entity.Competition;
 import pl.mm.sportmetrics.model.repo.Segments;
 
-public class AnalysisPageDataView {
+public class AnalysisPageDTO {
 
     Competition competition;
     Segments segments;
     RowResultsGroupsColletionView results;
-    AnalysisResultsGroupsCollectionView avgAnalysis;
+    AnalysisResultsGroupsCollectionView analyses;
 
     public Competition getCompetition() {
         return competition;
@@ -35,11 +34,11 @@ public class AnalysisPageDataView {
         this.results = results;
     }
 
-    public AnalysisResultsGroupsCollectionView getAvgAnalysis() {
-        return avgAnalysis;
+    public AnalysisResultsGroupsCollectionView getAnalyses() {
+        return analyses;
     }
 
-    public void setAvgAnalysis(AnalysisResultsGroupsCollectionView avgAnalysis) {
-        this.avgAnalysis = avgAnalysis;
+    public void setAnalyses(AnalysisResultsGroupsCollectionView analyses) {
+        this.analyses = analyses;
     }
 }

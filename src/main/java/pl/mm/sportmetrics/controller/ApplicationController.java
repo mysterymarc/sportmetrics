@@ -9,18 +9,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
-import org.springframework.web.servlet.ModelAndView;
-import pl.mm.sportmetrics.mapper.*;
-import pl.mm.sportmetrics.model.database.*;
-import pl.mm.sportmetrics.model.inputfile.CompetitionResultSet;
 import pl.mm.sportmetrics.model.inputfile.ImportService;
 import pl.mm.sportmetrics.model.repo.*;
 import pl.mm.sportmetrics.model.viewobject.*;
 import pl.mm.sportmetrics.repository.*;
-import pl.mm.sportmetrics.statistics.Calculation;
 
-import java.io.UncheckedIOException;
-import java.util.ArrayList;
 import java.util.List;
 
 

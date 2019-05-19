@@ -1,8 +1,6 @@
-package pl.mm.sportmetrics.model.database;
+package pl.mm.sportmetrics.repository.entity;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.List;
 
 @Entity
 @Table(name = "competition")

@@ -97,7 +97,7 @@
                         <th class="centered">delay</th>
                         <th class="centered">result</th>
                         <c:forEach items="${model.segments.segments}" var="segment">
-                            <th class="centered" colspan="2">${segment.name}</th>
+                            <th class="centered" colspan="2">${segment}</th>
                         </c:forEach>
                     </tr>
                     <c:forEach items="${model.resultRows.rowsView}" var="row" varStatus="status">

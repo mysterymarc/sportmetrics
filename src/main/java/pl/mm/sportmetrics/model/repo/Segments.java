@@ -1,39 +1,38 @@
 package pl.mm.sportmetrics.model.repo;
 
-import org.springframework.context.annotation.Bean;
-import pl.mm.sportmetrics.model.database.Segment;
+import pl.mm.sportmetrics.repository.entity.Segment;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 
-public class Segments implements Iterable<Segment>{
+public class Segments implements Iterable<String>{
 
-    List<Segment> segments = new ArrayList<Segment>();
+    List<String> segments = new ArrayList<String>();
 
     public Segments(){
 
     }
 
-    public Segments(List<Segment> segments){
+    public Segments(List<String> segments){
         this.segments = segments;
     }
 
     @Override
-    public Iterator<Segment> iterator() {
+    public Iterator<String> iterator() {
         return segments.iterator();
     }
 
-    public void add(Segment segment){
+    public void add(String segment){
         segments.add(segment);
     }
 
-    public List<Segment> getSegments() {
+    public List<String> getSegments() {
         return segments;
     }
 
-    public void setSegments(List<Segment> segments) {
+    public void setSegments(List<String> segments) {
         this.segments = segments;
     }
 }

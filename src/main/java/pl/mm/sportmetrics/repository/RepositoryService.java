@@ -3,11 +3,9 @@ package pl.mm.sportmetrics.repository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
-import pl.mm.sportmetrics.model.database.*;
-import pl.mm.sportmetrics.model.repo.ResultsForRunnersGroupFactory;
+import pl.mm.sportmetrics.repository.dao.*;
+import pl.mm.sportmetrics.repository.entity.*;
 import pl.mm.sportmetrics.model.repo.Segments;
 
 import java.util.ArrayList;
@@ -18,24 +16,26 @@ import java.util.Optional;
 public class RepositoryService {
 
     @Autowired
-    private CompetitionRepository competitionRepository;
+    private CompetitionDAO competitionRepository;
 
     @Autowired
-    private SegmentRepository segmentRepository;
+    private SegmentDAO segmentRepository;
 
     @Autowired
-    private CompetitorRepository competitorRepository;
+    private CompetitorDAO competitorRepository;
 
     @Autowired
-    private PartialResultRepository partialResultRepository;
+    private PartialResultDAO partialResultRepository;
 
     @Autowired
-    private TotalResultRepository totalResultRepository;
+    private TotalResultDAO totalResultRepository;
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public Segments getSegments(Long competitionId){
-        return new Segments(segmentRepository.findByCompetitionId(competitionId));
+        Segments segments = new Segments();
+        segmentRepository.findByCompetitionId(competitionId).forEach(segment -> segments.add(segment.name));
+        return segments;
     }
 
     public Optional<Competition> getCompetition(Long id){
@@ -52,8 +52,9 @@ public class RepositoryService {
         competitionRepository.save(competition);
     }
 
-    public void saveSegments(Segments segments){
-        segmentRepository.saveAll(segments.getSegments());
+    public void saveSegments(List<Segment> segments){
+
+        segmentRepository.saveAll(segments);
     }
 
     public void saveCompetitors(List<Competitor> competitors){

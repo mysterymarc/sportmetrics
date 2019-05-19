@@ -1,14 +1,11 @@
 package pl.mm.sportmetrics.mapper;
 
-import org.springframework.web.multipart.MultipartFile;
-import pl.mm.sportmetrics.model.database.*;
-import pl.mm.sportmetrics.model.inputfile.AtomResult;
+import pl.mm.sportmetrics.repository.entity.*;
 import pl.mm.sportmetrics.model.inputfile.CompetitionResultSet;
 import pl.mm.sportmetrics.model.inputfile.SingleResultSet;
 import pl.mm.sportmetrics.model.repo.Segments;
 
 import java.sql.Time;
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,14 +13,14 @@ public class CompetitionResultSetToDAOMapper {
 
     public Competition competition;
     public List<Competitor> competitors;
-    public Segments segments;
+    public List<Segment> segments;
     public List<TotalResult> totalResults;
     public List<PartialResult> partialResults;
 
     public CompetitionResultSetToDAOMapper() {
         competition = new Competition();
         competitors = new ArrayList<>();
-        segments = new Segments();
+        segments = new ArrayList<>();
         totalResults = new ArrayList<>();
         partialResults = new ArrayList<>();
     }
@@ -56,9 +53,9 @@ public class CompetitionResultSetToDAOMapper {
             totalResults.add(tmpTotal);
 
 
-            for (int i = 0; i < segments.getSegments().size(); i++) {
+            for (int i = 0; i < segments.size(); i++) {
                 PartialResult tmpPartial = new PartialResult();
-                tmpPartial.segment = segments.getSegments().get(i);
+                tmpPartial.segment = segments.get(i);
                 tmpPartial.segmentPosition = set.segmentResults.get(i).position;
                 tmpPartial.segmentTime = parseTime(set.segmentResults.get(i).time);
                 tmpPartial.cumulativePosition = set.cumulativeResults.get(i).position;

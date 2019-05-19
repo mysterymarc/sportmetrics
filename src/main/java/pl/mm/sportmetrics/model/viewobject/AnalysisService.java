@@ -1,13 +1,10 @@
 package pl.mm.sportmetrics.model.viewobject;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 import pl.mm.sportmetrics.mapper.RepoToViewOfResultsMatrixMapper;
 import pl.mm.sportmetrics.mapper.RepoToViewOfStatisticsMatrixMapper;
-import pl.mm.sportmetrics.model.database.Competition;
-import pl.mm.sportmetrics.model.database.Segment;
+import pl.mm.sportmetrics.repository.entity.Competition;
 import pl.mm.sportmetrics.model.repo.*;
 import pl.mm.sportmetrics.repository.RepositoryService;
 import pl.mm.sportmetrics.statistics.Calculation;
@@ -23,16 +20,16 @@ public class AnalysisService {
     @Autowired
     private ResultsForRunnersGroupFactory resultsForRunnersGroupFactory;
 
-    public AnalysisPageDataView getDataForView(Long competitionId, IdentifiersOfResultsGroupsCollection identifiersGroupsCollection) {
+    public AnalysisPageDTO getDataForView(Long competitionId, IdentifiersOfResultsGroupsCollection identifiersGroupsCollection) {
 
         ResultsForRunnersGroupsCollection resultsForRunnersGroupsCollection =
                 getResultsForSpecifiedGroupFromModel(identifiersGroupsCollection);
 
-        AnalysisPageDataView viewData = new AnalysisPageDataView();
+        AnalysisPageDTO viewData = new AnalysisPageDTO();
         viewData.setCompetition(getCompetition(competitionId));
         viewData.setSegments(getSegments(competitionId));
         viewData.setResults(getResults(resultsForRunnersGroupsCollection));
-        viewData.setAvgAnalysis(getAnalyses(resultsForRunnersGroupsCollection));
+        viewData.setAnalyses(getAnalyses(resultsForRunnersGroupsCollection));
 
         return viewData;
     }
