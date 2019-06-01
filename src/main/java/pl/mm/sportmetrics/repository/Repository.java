@@ -2,37 +2,34 @@ package pl.mm.sportmetrics.repository;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.mm.sportmetrics.model.repo.CompetitionsCollection;
-import pl.mm.sportmetrics.repository.entity.Event;
 import pl.mm.sportmetrics.model.inputfile.EventDataCollection;
+import pl.mm.sportmetrics.model.repo.CompetitionsCollection;
+import pl.mm.sportmetrics.model.repo.Segments;
 import pl.mm.sportmetrics.repository.dao.*;
 import pl.mm.sportmetrics.repository.entity.*;
-import pl.mm.sportmetrics.model.repo.Segments;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class Repository {
 
-    @Autowired
     private CompetitionDAO competitionDao;
-
-    @Autowired
     private SegmentDAO segmentDao;
-
-    @Autowired
     private CompetitorDAO competitorDao;
-
-    @Autowired
     private PartialResultDAO partialResultDao;
-
-    @Autowired
     private TotalResultDAO totalResultDao;
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    public Repository(CompetitionDAO competitionDao, SegmentDAO segmentDao, CompetitorDAO competitorDao,
+                      PartialResultDAO partialResultDao, TotalResultDAO totalResultDao) {
+        this.competitionDao = competitionDao;
+        this.segmentDao = segmentDao;
+        this.competitorDao = competitorDao;
+        this.partialResultDao = partialResultDao;
+        this.totalResultDao = totalResultDao;
+    }
 
     public Segments getSegments(Long competitionId){
         Segments segments = new Segments();

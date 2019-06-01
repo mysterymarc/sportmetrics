@@ -1,10 +1,12 @@
-package pl.mm.sportmetrics.model.viewobject;
+package pl.mm.sportmetrics.model.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.mm.sportmetrics.mapper.RepoToViewOfResultsMatrixMapper;
 import pl.mm.sportmetrics.mapper.RepoToViewOfStatisticsMatrixMapper;
 import pl.mm.sportmetrics.model.repo.*;
+import pl.mm.sportmetrics.model.viewobject.AnalysisPageDTO;
+import pl.mm.sportmetrics.model.viewobject.AnalysisResultsGroupsCollectionView;
+import pl.mm.sportmetrics.model.viewobject.RowResultsGroupsColletionView;
 import pl.mm.sportmetrics.repository.Repository;
 import pl.mm.sportmetrics.statistics.Calculation;
 
@@ -12,12 +14,13 @@ import pl.mm.sportmetrics.statistics.Calculation;
 @Service
 public class AnalysisService {
 
-
-    @Autowired
     private Repository repository;
-
-    @Autowired
     private ResultsForRunnersGroupFactory resultsForRunnersGroupFactory;
+
+    public AnalysisService(Repository repository,ResultsForRunnersGroupFactory factory){
+        this.repository = repository;
+        this.resultsForRunnersGroupFactory = factory;
+    }
 
     public AnalysisPageDTO getDataForView(Long competitionId, IdentifiersOfResultsGroupsCollection identifiersGroupsCollection) {
 

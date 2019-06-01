@@ -2,17 +2,19 @@ package pl.mm.sportmetrics.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
-import pl.mm.sportmetrics.model.inputfile.ImportService;
-import pl.mm.sportmetrics.model.repo.*;
-import pl.mm.sportmetrics.model.viewobject.*;
-import pl.mm.sportmetrics.repository.*;
+import pl.mm.sportmetrics.model.repo.IdentifiersOfResultsGroupsCollection;
+import pl.mm.sportmetrics.model.services.AnalysisService;
+import pl.mm.sportmetrics.model.services.EventsService;
+import pl.mm.sportmetrics.model.services.ImportService;
+import pl.mm.sportmetrics.model.services.ResultsService;
 
 import java.util.List;
 
@@ -20,29 +22,30 @@ import java.util.List;
 @Controller
 public class ApplicationController {
 
-    @Autowired
-    private Repository repository;
+    private EventsService eventsService;
 
-    @Autowired
     private ResultsService resultsService;
 
-    @Autowired
     private AnalysisService analysisService;
 
-    @Autowired
     private ImportService importService;
-
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    public ApplicationController(EventsService eventsService, ResultsService resultsService, AnalysisService analysisService, ImportService importService){
+        this.eventsService = eventsService;
+        this.resultsService = resultsService;
+        this.analysisService = analysisService;
+        this.importService = importService;
+    }
 
     @GetMapping(value = "/")
-    public String firstMethod() {
+    public String redirectToMainPage() {
         return "redirect:/events";
     }
 
     @PostMapping(value = "/uploadEventResults")
-    public String controlFile(@RequestParam("file") MultipartFile jsonFile, Model model) {
+    public String importEvent(@RequestParam("file") MultipartFile jsonFile, Model model) {
         try {
             if (importService.importExternalData(jsonFile)) {
                 model.addAttribute("uploadResult", "success");
@@ -57,18 +60,18 @@ public class ApplicationController {
     }
 
     @GetMapping(value = "/addEvent")
-    public String showAddEventPage() {
+    public String showAddEventForm() {
         return "addEvent";
     }
 
     @GetMapping(value = "/events")
-    public String eventList(Model model) {
-        model.addAttribute("competitions", repository.getAllCompetitions());
+    public String showEventsList(Model model) {
+        model.addAttribute("model", eventsService.getDataForView());
         return "allEvents";
     }
 
     @GetMapping(value = "/results", params = "competition_id")
-    public String returnResult(@RequestParam("competition_id") Long competitionId, Model model) {
+    public String showEventsResults(@RequestParam("competition_id") Long competitionId, Model model) {
         try {
             model.addAttribute("model", resultsService.getDataForView(competitionId));
         } catch (IllegalArgumentException e) {
@@ -79,7 +82,7 @@ public class ApplicationController {
     }
 
     @GetMapping(value = "/analyse")
-    public String analyseRequest(@RequestParam Long competitionId,
+    public String showEventsAnalyses(@RequestParam Long competitionId,
                                  @RequestParam List<Long> firstGroup,
                                  @RequestParam List<Long> secondGroup,
                                  Model model) {
