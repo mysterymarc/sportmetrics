@@ -3,8 +3,8 @@ package pl.mm.sportmetrics.repository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import pl.mm.sportmetrics.model.inputdata.EventDataCollection;
-import pl.mm.sportmetrics.model.repo.*;
+import pl.mm.sportmetrics.model.inputlayer.EventDataCollection;
+import pl.mm.sportmetrics.model.businesslayer.*;
 import pl.mm.sportmetrics.repository.dao.*;
 import pl.mm.sportmetrics.repository.entity.*;
 

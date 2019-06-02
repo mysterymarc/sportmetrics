@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
-import pl.mm.sportmetrics.model.repo.IdentifiersOfResultsGroupsCollection;
-import pl.mm.sportmetrics.model.services.AnalysisService;
-import pl.mm.sportmetrics.model.services.EventsService;
-import pl.mm.sportmetrics.model.services.ImportService;
-import pl.mm.sportmetrics.model.services.ResultsService;
+import pl.mm.sportmetrics.model.businesslayer.IdentifiersOfResultsGroupsCollection;
+import pl.mm.sportmetrics.services.AnalysisService;
+import pl.mm.sportmetrics.services.EventsService;
+import pl.mm.sportmetrics.services.ImportService;
+import pl.mm.sportmetrics.services.ResultsService;
 
 import java.util.List;
 

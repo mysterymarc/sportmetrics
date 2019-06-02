@@ -1,7 +1,7 @@
 package pl.mm.sportmetrics.repository.entity;
 
-import pl.mm.sportmetrics.model.inputdata.EventDataCollection;
-import pl.mm.sportmetrics.model.inputdata.SingleResultSet;
+import pl.mm.sportmetrics.model.inputlayer.EventDataCollection;
+import pl.mm.sportmetrics.model.inputlayer.SingleResultSet;
 
 import java.sql.Time;
 
