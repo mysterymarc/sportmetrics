@@ -1,7 +1,5 @@
 package pl.mm.sportmetrics.model.repo;
 
-import pl.mm.sportmetrics.repository.entity.Segment;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;

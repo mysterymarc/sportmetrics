@@ -5,7 +5,7 @@ import java.sql.Time;
 
 @Entity
 @Table(name = "total_result")
-public class TotalResult {
+public class TotalResultEntity {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -13,11 +13,11 @@ public class TotalResult {
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "competition_id", referencedColumnName = "id")
-    public Competition competition;
+    public CompetitionEntity competition;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "competitor_id", referencedColumnName = "id")
-    public Competitor competitor;
+    public CompetitorEntity competitor;
 
     public int position;
 
@@ -31,11 +31,11 @@ public class TotalResult {
         return id;
     }
 
-    public Competition getCompetition() {
+    public CompetitionEntity getCompetition() {
         return competition;
     }
 
-    public Competitor getCompetitor() {
+    public CompetitorEntity getCompetitor() {
         return competitor;
     }
 
@@ -51,15 +51,15 @@ public class TotalResult {
         return delayTime;
     }
 
-    public TotalResult(){
+    public TotalResultEntity(){
 
     }
 
-    public TotalResult(TotalResult result){
+    public TotalResultEntity(TotalResultEntity result){
         this.id = result.id;
         this.position = result.position;
         this.totalTime = (Time) result.totalTime.clone();
         this.delayTime = (Time) result.delayTime.clone();
-        this.competitor = new Competitor(result.competitor);
+        this.competitor = new CompetitorEntity(result.competitor);
     }
 }

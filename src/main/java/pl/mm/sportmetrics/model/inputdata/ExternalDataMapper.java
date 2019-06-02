@@ -1,4 +1,4 @@
-package pl.mm.sportmetrics.model.inputfile;
+package pl.mm.sportmetrics.model.inputdata;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.web.multipart.MultipartFile;

@@ -18,7 +18,7 @@ public class EventsService {
 
     public EventsPageDTO getDataForView(){
         EventsPageDTO events = new EventsPageDTO();
-        events.setEvents(repository.getAllCompetitions());
+        events.setEvents(repository.findAllCompetitions());
         return events;
     }
 

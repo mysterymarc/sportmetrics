@@ -1,11 +1,12 @@
 package pl.mm.sportmetrics.repository.dao;
 
 import org.springframework.data.repository.CrudRepository;
-import pl.mm.sportmetrics.repository.entity.TotalResult;
+import pl.mm.sportmetrics.repository.entity.TotalResultEntity;
 
 import java.util.List;
+import java.util.Optional;
 
-public interface TotalResultDAO extends CrudRepository<TotalResult,Long> {
+public interface TotalResultDAO extends CrudRepository<TotalResultEntity,Long> {
 
-    List<TotalResult> findByCompetitionId(Long CompetitionId);
+    Optional<List<TotalResultEntity>> findByCompetitionId(Long CompetitionId);
 }

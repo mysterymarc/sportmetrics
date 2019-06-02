@@ -4,8 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import pl.mm.sportmetrics.model.inputfile.EventDataCollection;
-import pl.mm.sportmetrics.model.inputfile.ExternalDataMapper;
+import pl.mm.sportmetrics.model.inputdata.EventDataCollection;
+import pl.mm.sportmetrics.model.inputdata.ExternalDataMapper;
 import pl.mm.sportmetrics.repository.Repository;
 
 import java.io.UncheckedIOException;

@@ -15,11 +15,9 @@ import pl.mm.sportmetrics.statistics.Calculation;
 public class AnalysisService {
 
     private Repository repository;
-    private ResultsForRunnersGroupFactory resultsForRunnersGroupFactory;
 
-    public AnalysisService(Repository repository,ResultsForRunnersGroupFactory factory){
+    public AnalysisService(Repository repository){
         this.repository = repository;
-        this.resultsForRunnersGroupFactory = factory;
     }
 
     public AnalysisPageDTO getDataForView(Long competitionId, IdentifiersOfResultsGroupsCollection identifiersGroupsCollection) {
@@ -41,7 +39,7 @@ public class AnalysisService {
         ResultsForRunnersGroupsCollection resultsForRunnersGroupsCollection = new ResultsForRunnersGroupsCollection();
 
         identifiersGroupsCollection.forEach(collection ->
-                resultsForRunnersGroupsCollection.add(resultsForRunnersGroupFactory.getObject(collection.getIdentifiers())));
+                resultsForRunnersGroupsCollection.add(repository.findResultsByTotalResultIds(collection)));
 
         return resultsForRunnersGroupsCollection;
     }

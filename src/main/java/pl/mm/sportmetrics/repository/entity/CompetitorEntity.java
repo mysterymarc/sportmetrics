@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "competitor")
-public class Competitor {
+public class CompetitorEntity {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -26,12 +26,12 @@ public class Competitor {
         return city;
     }
 
-    public Competitor(Competitor comp){
+    public CompetitorEntity(CompetitorEntity comp){
         this.id = comp.id;
         this.city = comp.city;
         this.name = comp.name;
     }
 
-    public Competitor(){}
+    public CompetitorEntity(){}
 
 }

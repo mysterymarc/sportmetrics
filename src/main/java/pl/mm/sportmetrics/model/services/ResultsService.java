@@ -4,7 +4,6 @@ import org.springframework.stereotype.Service;
 import pl.mm.sportmetrics.mapper.RepoToViewOfResultsMatrixMapper;
 import pl.mm.sportmetrics.model.repo.Competition;
 import pl.mm.sportmetrics.model.repo.ResultsForRunnersGroup;
-import pl.mm.sportmetrics.model.repo.ResultsForRunnersGroupFactory;
 import pl.mm.sportmetrics.model.repo.Segments;
 import pl.mm.sportmetrics.model.viewobject.ResultsPageDTO;
 import pl.mm.sportmetrics.model.viewobject.RowResultsGroupView;
@@ -15,11 +14,9 @@ import pl.mm.sportmetrics.repository.Repository;
 public class ResultsService {
 
     private Repository repository;
-    private ResultsForRunnersGroupFactory resultsForRunnersGroupFactory;
 
-    public ResultsService(Repository repository, ResultsForRunnersGroupFactory factory){
+    public ResultsService(Repository repository){
         this.repository = repository;
-        this.resultsForRunnersGroupFactory = factory;
      }
 
     public ResultsPageDTO getDataForView(Long competitionId) {
@@ -41,7 +38,7 @@ public class ResultsService {
     }
 
     private RowResultsGroupView getResults(Long competitionId) {
-        ResultsForRunnersGroup resultsForRunnersGroup = resultsForRunnersGroupFactory.getObject(competitionId);
+        ResultsForRunnersGroup resultsForRunnersGroup = repository.findResultsByCompetitionId(competitionId);
 
         RowResultsGroupView detailResultRowForGroups;
 

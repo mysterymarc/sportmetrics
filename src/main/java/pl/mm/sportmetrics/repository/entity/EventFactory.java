@@ -1,7 +1,7 @@
 package pl.mm.sportmetrics.repository.entity;
 
-import pl.mm.sportmetrics.model.inputfile.EventDataCollection;
-import pl.mm.sportmetrics.model.inputfile.SingleResultSet;
+import pl.mm.sportmetrics.model.inputdata.EventDataCollection;
+import pl.mm.sportmetrics.model.inputdata.SingleResultSet;
 
 import java.sql.Time;
 
@@ -13,7 +13,7 @@ public class EventFactory {
         createdEvent.competition.name = eventDataCollection.name;
 
         for (int i = 0; i < eventDataCollection.segments.size();i++) {
-            Segment tmpSeg = new Segment();
+            SegmentEntity tmpSeg = new SegmentEntity();
             tmpSeg.name = eventDataCollection.segments.get(i);
             tmpSeg.competition = createdEvent.competition;
             tmpSeg.orderNumber = i;
@@ -21,12 +21,12 @@ public class EventFactory {
         }
 
         for (SingleResultSet set : eventDataCollection.results) {
-            Competitor tmpComp = new Competitor();
+            CompetitorEntity tmpComp = new CompetitorEntity();
             tmpComp.name = set.competitor;
             tmpComp.city = set.city;
             createdEvent.competitors.add(tmpComp);
 
-            TotalResult tmpTotal = new TotalResult();
+            TotalResultEntity tmpTotal = new TotalResultEntity();
             tmpTotal.competition = createdEvent.competition;
             tmpTotal.competitor = tmpComp;
             tmpTotal.position = set.position;
@@ -36,7 +36,7 @@ public class EventFactory {
 
 
             for (int i = 0; i < createdEvent.segments.size(); i++) {
-                PartialResult tmpPartial = new PartialResult();
+                PartialResultEntity tmpPartial = new PartialResultEntity();
                 tmpPartial.segment = createdEvent.segments.get(i);
                 tmpPartial.segmentPosition = set.segmentResults.get(i).position;
                 tmpPartial.segmentTime = parseTime(set.segmentResults.get(i).time);

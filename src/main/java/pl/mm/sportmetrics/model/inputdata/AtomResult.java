@@ -1,4 +1,4 @@
-package pl.mm.sportmetrics.model.inputfile;
+package pl.mm.sportmetrics.model.inputdata;
 
 public class AtomResult {
     public String time;

@@ -5,7 +5,7 @@ import java.sql.Time;
 
 @Entity
 @Table(name = "partial_result")
-public class PartialResult {
+public class PartialResultEntity {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -13,11 +13,11 @@ public class PartialResult {
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "total_result_id", referencedColumnName = "id")
-    public TotalResult totalResult;
+    public TotalResultEntity totalResult;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "segment_id", referencedColumnName = "id")
-    public Segment segment;
+    public SegmentEntity segment;
 
 
     @Column(name="segment_position")
@@ -36,11 +36,11 @@ public class PartialResult {
         return id;
     }
 
-    public TotalResult getTotalResult() {
+    public TotalResultEntity getTotalResult() {
         return totalResult;
     }
 
-    public Segment getSegment() {
+    public SegmentEntity getSegment() {
         return segment;
     }
 

@@ -12,15 +12,10 @@ public class ResultsForRunner {
     String competitorCity;
     Time totalTime;
     Time delayTime;
-    List<Result> segmentResults;
-    List<Result> cumulativeResults;
+    List<Result> segmentResults = new ArrayList<Result>();
+    List<Result> cumulativeResults = new ArrayList<Result>();
     Long competitorId;
     Long totalResultId;
-
-    public ResultsForRunner() {
-        segmentResults = new ArrayList<Result>();
-        cumulativeResults = new ArrayList<Result>();
-    }
 
     public int getPosition() {
         return position;
@@ -92,5 +87,13 @@ public class ResultsForRunner {
 
     public void setTotalResultId(Long totalResultId) {
         this.totalResultId = totalResultId;
+    }
+
+    public void addSegmentResult(Result result){
+        segmentResults.add(result);
+    }
+
+    public void addCumulativeResult(Result result){
+        cumulativeResults.add(result);
     }
 }

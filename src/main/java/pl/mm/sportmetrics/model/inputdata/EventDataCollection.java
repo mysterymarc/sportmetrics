@@ -1,6 +1,4 @@
-package pl.mm.sportmetrics.model.inputfile;
-
-import pl.mm.sportmetrics.model.repo.Segments;
+package pl.mm.sportmetrics.model.inputdata;
 
 import java.util.List;
 

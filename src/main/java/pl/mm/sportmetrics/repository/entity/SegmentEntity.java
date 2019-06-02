@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "segment")
-public class Segment {
+public class SegmentEntity {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -12,7 +12,7 @@ public class Segment {
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "competition_id", referencedColumnName = "id")
-    public Competition competition;
+    public CompetitionEntity competition;
 
     @Column(name="order_number")
     public int orderNumber;
@@ -21,7 +21,7 @@ public class Segment {
         return id;
     }
 
-    public Competition getCompetition() {
+    public CompetitionEntity getCompetition() {
         return competition;
     }
 

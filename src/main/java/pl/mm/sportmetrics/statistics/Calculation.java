@@ -1,17 +1,19 @@
 package pl.mm.sportmetrics.statistics;
 
-import pl.mm.sportmetrics.repository.entity.PartialResult;
-import pl.mm.sportmetrics.model.repo.*;
+import pl.mm.sportmetrics.model.repo.Result;
+import pl.mm.sportmetrics.model.repo.ResultsForRunnersGroup;
+import pl.mm.sportmetrics.model.repo.SegmentsStatistic;
+import pl.mm.sportmetrics.model.repo.SingleStatistic;
+import pl.mm.sportmetrics.repository.entity.PartialResultEntity;
 
 import java.sql.Time;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Calculation {
 
 
-    public List<Time> getAvgFromResults(List<List<PartialResult>> all) {
+    public List<Time> getAvgFromResults(List<List<PartialResultEntity>> all) {
 
         List<Time> avg = new ArrayList<>();
 
@@ -50,7 +52,7 @@ public class Calculation {
 
     public SegmentsStatistic getAvgFromResults(ResultsForRunnersGroup resultsForRunnersGroup) {
         SegmentsStatistic avg = new SegmentsStatistic();
-        avg.setTitle("Segment Average Time");
+        avg.setTitle("SegmentEntity Average Time");
         List<Long> tmpSegmentCalculation = new ArrayList<>();
 
         int segmentsNumber = resultsForRunnersGroup.getSegmentsNumber();
