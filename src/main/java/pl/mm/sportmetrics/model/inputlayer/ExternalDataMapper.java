@@ -9,12 +9,12 @@ import java.io.UncheckedIOException;
 
 public class ExternalDataMapper {
 
-    public EventDataCollection readJsonFile(MultipartFile file) {
+    public Event readJsonFile(MultipartFile file) {
 
-        EventDataCollection receivedEvent;
+        Event receivedEvent;
         try {
             InputStreamReader stream = new InputStreamReader(file.getInputStream(), "UTF-8");
-            receivedEvent = new ObjectMapper().readValue(stream, EventDataCollection.class);
+            receivedEvent = new ObjectMapper().readValue(stream, Event.class);
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }

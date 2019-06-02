@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import pl.mm.sportmetrics.model.inputlayer.EventDataCollection;
+import pl.mm.sportmetrics.model.inputlayer.Event;
 import pl.mm.sportmetrics.model.inputlayer.ExternalDataMapper;
 import pl.mm.sportmetrics.repository.Repository;
 
@@ -23,8 +23,8 @@ public class ImportService {
     public boolean importExternalData(MultipartFile jsonFile){
 
         try {
-            EventDataCollection receivedEvent = new ExternalDataMapper().readJsonFile(jsonFile);
-            repository.saveEventDataCollection(receivedEvent);
+            Event receivedEvent = new ExternalDataMapper().readJsonFile(jsonFile);
+            repository.saveEvent(receivedEvent);
             return true;
         } catch (UncheckedIOException e){
             logger.error(e.getMessage(),e.fillInStackTrace());

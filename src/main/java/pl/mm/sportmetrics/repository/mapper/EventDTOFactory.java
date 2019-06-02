@@ -1,26 +1,27 @@
-package pl.mm.sportmetrics.repository.entity;
+package pl.mm.sportmetrics.repository.mapper;
 
-import pl.mm.sportmetrics.model.inputlayer.EventDataCollection;
+import pl.mm.sportmetrics.model.inputlayer.Event;
 import pl.mm.sportmetrics.model.inputlayer.SingleResultSet;
+import pl.mm.sportmetrics.repository.entity.*;
 
 import java.sql.Time;
+// TODO: czy to ma byc factory, moze to raczej jest mapper?
+public class EventDTOFactory {
 
-public class EventFactory {
+    public EventDTO getEvent(Event event){
+        EventDTO createdEvent = new EventDTO();     //TODO: czy tu moze byc new?
+// TODO: rozbic na kilka metod, po co wszystko w jednej:
+        createdEvent.competition.name = event.name;
 
-    public Event getEvent(EventDataCollection eventDataCollection){
-        Event createdEvent = new Event();
-
-        createdEvent.competition.name = eventDataCollection.name;
-
-        for (int i = 0; i < eventDataCollection.segments.size();i++) {
+        for (int i = 0; i < event.segments.size(); i++) {
             SegmentEntity tmpSeg = new SegmentEntity();
-            tmpSeg.name = eventDataCollection.segments.get(i);
+            tmpSeg.name = event.segments.get(i);
             tmpSeg.competition = createdEvent.competition;
             tmpSeg.orderNumber = i;
             createdEvent.segments.add(tmpSeg);
         }
 
-        for (SingleResultSet set : eventDataCollection.results) {
+        for (SingleResultSet set : event.results) {
             CompetitorEntity tmpComp = new CompetitorEntity();
             tmpComp.name = set.competitor;
             tmpComp.city = set.city;
