@@ -1,9 +1,6 @@
 package pl.mm.sportmetrics.logic;
 
-import pl.mm.sportmetrics.model.businesslayer.Result;
-import pl.mm.sportmetrics.model.businesslayer.ResultsForRunnersGroup;
-import pl.mm.sportmetrics.model.businesslayer.SegmentsStatistic;
-import pl.mm.sportmetrics.model.businesslayer.SingleStatistic;
+import pl.mm.sportmetrics.model.businesslayer.*;
 import pl.mm.sportmetrics.repository.entity.PartialResultEntity;
 
 import java.sql.Time;
@@ -13,41 +10,57 @@ import java.util.List;
 public class Calculation {
 
     public SegmentsStatistic getAvgFromResults(ResultsForRunnersGroup resultsForRunnersGroup) {
-        SegmentsStatistic avg = new SegmentsStatistic();
-        avg.setTitle("Segment Average Time");
-        List<Long> tmpSegmentCalculation = new ArrayList<>();
 
-        int segmentsNumber = resultsForRunnersGroup.getSegmentsNumber();
         int competitorsNumber = resultsForRunnersGroup.getRowsNumber();
 
-        for (int i = 0; i < segmentsNumber; i++) {
-            tmpSegmentCalculation.add(0L);
+        List<Long> partialCalculation = sumupRunnersTimesForEachSegmentSeparately(resultsForRunnersGroup);
+        SegmentsStatistic avg = divideTimesForEachSegmentSeparatelyByCompetitorsNumber(partialCalculation,competitorsNumber);
+
+        avg.setTitle("Segment Average Time");
+        return avg;
+    }
+
+    private List<Long> initiateListWithZeros(int size){
+        List<Long> list = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            list.add(0L);
         }
+        return list;
+    }
+
+    private List<Long> sumupRunnersTimesForEachSegmentSeparately(ResultsForRunnersGroup results){
+        int segmentsNumber = results.getSegmentsNumber();
+        int competitorsNumber = results.getRowsNumber();
+
+        List<Long> sumupCalculation = initiateListWithZeros(segmentsNumber);
 
         for (int j = 0; j < segmentsNumber; j++) {
 
-            List<Result> scoresForSegment = resultsForRunnersGroup.getAllCompetitorsSingleSegmentScores(j);
+            List<Result> scoresForSegment = results.getAllCompetitorsSingleSegmentScores(j);
 
             for (int i = 0; i < competitorsNumber; i++) {
                 Time singleTime = scoresForSegment.get(i).getTime();
                 if (singleTime.equals(Time.valueOf("00:00:00"))) {
-                    tmpSegmentCalculation.set(j, Time.valueOf("00:00:00").getTime());
+                    sumupCalculation.set(j, Time.valueOf("00:00:00").getTime());
                     break;
                 } else {
-                    tmpSegmentCalculation.set(j, tmpSegmentCalculation.get(j) + singleTime.getTime());
+                    sumupCalculation.set(j, sumupCalculation.get(j) + singleTime.getTime());
                 }
             }
         }
+        return sumupCalculation;
+    }
 
-        for (int i = 0; i < segmentsNumber; i++) {
-            if (tmpSegmentCalculation.get(i).equals(Time.valueOf("00:00:00").getTime())) {
+    private SegmentsStatistic divideTimesForEachSegmentSeparatelyByCompetitorsNumber(List<Long> sumOfSegmentTimes, int competitorsNumber){
+        SegmentsStatistic avg = new SegmentsStatistic();
+        for (int i = 0; i < sumOfSegmentTimes.size(); i++) {
+            if (sumOfSegmentTimes.get(i).equals(Time.valueOf("00:00:00").getTime())) {
                 avg.addStatistic(Time.valueOf("00:00:00"));
             } else {
-                avg.addStatistic(new Time(tmpSegmentCalculation.get(i) / competitorsNumber));
+                avg.addStatistic(new Time(sumOfSegmentTimes.get(i) / competitorsNumber));
             }
         }
-
         return avg;
-
     }
+
 }

@@ -25,7 +25,7 @@ public class ResultsForRunnersGroup implements Iterable<ResultsForRunner> {
     public List<Result> getAllCompetitorsSingleSegmentScores(int segmentNumber){
         List<Result> resultList = new ArrayList<>();
         for(ResultsForRunner row : resultsForRunners){
-            resultList.add(row.segmentResults.get(segmentNumber));
+            resultList.add(row.getSegmentResults().get(segmentNumber));
         }
         return resultList;
     }

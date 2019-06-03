@@ -6,16 +6,15 @@ import java.util.List;
 
 public class ResultsForRunner {
 
-
-    int position;
-    String competitorName;
-    String competitorCity;
-    Time totalTime;
-    Time delayTime;
-    List<Result> segmentResults = new ArrayList<Result>();
-    List<Result> cumulativeResults = new ArrayList<Result>();
-    Long competitorId;
-    Long totalResultId;
+    private int position;
+    private String competitorName;
+    private String competitorCity;
+    private Time totalTime;
+    private Time delayTime;
+    private List<Result> segmentResults = new ArrayList<Result>();
+    private List<Result> cumulativeResults = new ArrayList<Result>();
+    private Long competitorId;
+    private Long totalResultId;
 
     public int getPosition() {
         return position;
