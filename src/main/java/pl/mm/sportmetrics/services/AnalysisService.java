@@ -1,12 +1,8 @@
 package pl.mm.sportmetrics.services;
 
 import org.springframework.stereotype.Service;
-import pl.mm.sportmetrics.model.viewlayer.RepoToViewOfResultsMatrixMapper;
-import pl.mm.sportmetrics.model.viewlayer.RepoToViewOfStatisticsMatrixMapper;
+import pl.mm.sportmetrics.model.viewlayer.*;
 import pl.mm.sportmetrics.model.businesslayer.*;
-import pl.mm.sportmetrics.model.viewlayer.AnalysisPageDTO;
-import pl.mm.sportmetrics.model.viewlayer.AnalysisResultsGroupsCollectionView;
-import pl.mm.sportmetrics.model.viewlayer.RowResultsGroupsColletionView;
 import pl.mm.sportmetrics.repository.Repository;
 import pl.mm.sportmetrics.logic.Calculation;
 
@@ -53,16 +49,17 @@ public class AnalysisService {
     }
 
     private RowResultsGroupsColletionView getResults(ResultsForRunnersGroupsCollection resultsGroupsCollection) {
-
         RowResultsGroupsColletionView detailResultRowForGroups = new RowResultsGroupsColletionView();
-
         for (ResultsForRunnersGroup group : resultsGroupsCollection) {
-            RepoToViewOfResultsMatrixMapper mapper = new RepoToViewOfResultsMatrixMapper();
-            mapper.doMapping(group);
-            detailResultRowForGroups.add(mapper.getResultsMatrix());
+            detailResultRowForGroups.add(mapBusinessResultsForGroupToViewResultsForGroup(group));
         }
-
         return detailResultRowForGroups;
+    }
+
+    private RowResultsGroupView mapBusinessResultsForGroupToViewResultsForGroup(ResultsForRunnersGroup resultsForRunnersGroup){
+        ResultsMatrixFromBusinessToViewMapper mapper = new ResultsMatrixFromBusinessToViewMapper();
+        mapper.doMapping(resultsForRunnersGroup);
+        return mapper.getResultsMatrix();
     }
 
     private AnalysisResultsGroupsCollectionView getAnalyses(ResultsForRunnersGroupsCollection resultsGroupsCollection) {

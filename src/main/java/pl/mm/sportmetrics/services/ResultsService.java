@@ -1,7 +1,7 @@
 package pl.mm.sportmetrics.services;
 
 import org.springframework.stereotype.Service;
-import pl.mm.sportmetrics.model.viewlayer.RepoToViewOfResultsMatrixMapper;
+import pl.mm.sportmetrics.model.viewlayer.ResultsMatrixFromBusinessToViewMapper;
 import pl.mm.sportmetrics.model.businesslayer.Competition;
 import pl.mm.sportmetrics.model.businesslayer.ResultsForRunnersGroup;
 import pl.mm.sportmetrics.model.businesslayer.Segments;
@@ -20,12 +20,10 @@ public class ResultsService {
      }
 
     public ResultsPageDTO getDataForView(Long competitionId) {
-
         ResultsPageDTO results = new ResultsPageDTO();
         results.setCompetition(getCompetition(competitionId));
         results.setSegments(getSegments(competitionId));
         results.setResultRows(getResults(competitionId));
-
         return results;
     }
 
@@ -39,13 +37,12 @@ public class ResultsService {
 
     private RowResultsGroupView getResults(Long competitionId) {
         ResultsForRunnersGroup resultsForRunnersGroup = repository.findResultsByCompetitionId(competitionId);
+        return mapBusinessResultsForGroupToViewResultsForGroup(resultsForRunnersGroup);
+    }
 
-        RowResultsGroupView detailResultRowForGroups;
-
-        RepoToViewOfResultsMatrixMapper mapper = new RepoToViewOfResultsMatrixMapper();
+    private RowResultsGroupView mapBusinessResultsForGroupToViewResultsForGroup(ResultsForRunnersGroup resultsForRunnersGroup){
+        ResultsMatrixFromBusinessToViewMapper mapper = new ResultsMatrixFromBusinessToViewMapper();
         mapper.doMapping(resultsForRunnersGroup);
-        detailResultRowForGroups = mapper.getResultsMatrix();
-
-        return detailResultRowForGroups;
+        return mapper.getResultsMatrix();
     }
 }

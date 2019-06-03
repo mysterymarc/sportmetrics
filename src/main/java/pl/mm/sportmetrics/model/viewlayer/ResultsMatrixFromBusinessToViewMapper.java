@@ -8,7 +8,7 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RepoToViewOfResultsMatrixMapper {
+public class ResultsMatrixFromBusinessToViewMapper {
 
     private RowResultsGroupView resultRows = new RowResultsGroupView();
 

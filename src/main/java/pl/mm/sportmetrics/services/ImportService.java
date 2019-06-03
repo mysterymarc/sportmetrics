@@ -21,7 +21,6 @@ public class ImportService {
     }
 
     public boolean importExternalData(MultipartFile jsonFile){
-
         try {
             Event receivedEvent = new ExternalDataMapper().readJsonFile(jsonFile);
             repository.saveEvent(receivedEvent);
