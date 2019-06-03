@@ -30,6 +30,13 @@ public class SegmentsStatistic {
         segmentSingleStatistics.add(singleStatistic);
     }
 
+    public void addStatistic(Time value, String description){
+        SingleStatistic singleStatistic = new SingleStatistic();
+        singleStatistic.setValue(value);
+        singleStatistic.setDescription(description);
+        segmentSingleStatistics.add(singleStatistic);
+    }
+
     public int segmentsNumber(){
         return segmentSingleStatistics.size();
     }

@@ -28,8 +28,4 @@ public class AnalysisResultRow {
         this.title = title;
     }
 
-    public void addSegmentResult(){
-
-    }
-
 }
