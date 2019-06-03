@@ -17,7 +17,7 @@ public class ResultsMatrixFromBusinessToViewMapper {
         return resultRows;
     }
 
-    public void doMapping(ResultsForRunnersGroup resultsForRunnersGroup) {
+    public RowResultsGroupView doMapping(ResultsForRunnersGroup resultsForRunnersGroup) {
 
         for (ResultsForRunner modelResultsForRunner : resultsForRunnersGroup) {
             RowResultView viewScoresRow = new RowResultView();
@@ -32,6 +32,7 @@ public class ResultsMatrixFromBusinessToViewMapper {
             viewScoresRow.setCumulativeResults(mapModelScoreToViewScore(modelResultsForRunner.getCumulativeResults()));
             resultRows.add(viewScoresRow);
         }
+        return resultRows;
     }
 
     private List<SingleResultView> mapModelScoreToViewScore(List<Result> modelResults){

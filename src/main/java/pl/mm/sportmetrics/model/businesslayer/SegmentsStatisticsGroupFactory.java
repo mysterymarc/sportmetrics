@@ -8,7 +8,7 @@ public class SegmentsStatisticsGroupFactory {
 
         SegmentsStatisticsGroup rowsGroup = new SegmentsStatisticsGroup();
         rowsGroup.add(new Calculation().getAvgFromResults(resultsForRunnersGroup));
-            //if more logic should be calculated - it should be implemented here as: rowsGroup.add(new Calculation().getStatisticFromResults())
+            //if additional statistics should be calculated it should be implemented here as: rowsGroup.add(new Calculation().getMedianFromResults())
         return rowsGroup;
     }
 

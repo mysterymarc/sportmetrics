@@ -7,8 +7,6 @@ import java.util.List;
 public class SegmentsStatisticsGroup implements Iterable<SegmentsStatistic> {
 
     private List<SegmentsStatistic> allSegmentStatistics = new ArrayList<SegmentsStatistic>();
-
-
     public boolean add(SegmentsStatistic row){
         return allSegmentStatistics.add(row);
     }
@@ -22,5 +20,8 @@ public class SegmentsStatisticsGroup implements Iterable<SegmentsStatistic> {
         return allSegmentStatistics.get(i);
     }
 
+    public int getNumberOfStatistics(){
+        return allSegmentStatistics.size();
+    }
 
 }

@@ -14,7 +14,7 @@ public class Calculation {
 
     public SegmentsStatistic getAvgFromResults(ResultsForRunnersGroup resultsForRunnersGroup) {
         SegmentsStatistic avg = new SegmentsStatistic();
-        avg.setTitle("SegmentEntity Average Time");
+        avg.setTitle("Segment Average Time");
         List<Long> tmpSegmentCalculation = new ArrayList<>();
 
         int segmentsNumber = resultsForRunnersGroup.getSegmentsNumber();
@@ -50,35 +50,4 @@ public class Calculation {
         return avg;
 
     }
-
-    public void setWinLossAttributeToStatisticsByItsComparison(SegmentsStatistic firstRow, SegmentsStatistic secondRow) {
-
-        for (int i = 0; i < firstRow.segmentsNumber(); i++) {
-            SingleStatistic first = firstRow.getStatistic(i);
-            SingleStatistic second = secondRow.getStatistic(i);
-            if (first.getValue().equals(Time.valueOf("00:00:00")) && second.getValue().equals(Time.valueOf("00:00:00"))) {
-                first.setDescription("draw");
-                second.setDescription("draw");
-            } else if (first.getValue().equals(Time.valueOf("00:00:00"))) {
-                first.setDescription("loss");
-                second.setDescription("win");
-            } else if (second.getValue().equals(Time.valueOf("00:00:00"))) {
-                first.setDescription("win");
-                second.setDescription("loss");
-            } else if (first.getValue().getTime() > second.getValue().getTime()) {
-                first.setDescription("loss");
-                second.setDescription("win");
-            } else if (first.getValue().getTime() < second.getValue().getTime()) {
-                first.setDescription("win");
-                second.setDescription("loss");
-            } else if (first.getValue().getTime() == second.getValue().getTime()) {
-                first.setDescription("draw");
-                second.setDescription("draw");
-            } else {
-                first.setDescription("error");
-                second.setDescription("error");
-            }
-        }
-    }
-
 }

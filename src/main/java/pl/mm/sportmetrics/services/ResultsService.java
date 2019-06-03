@@ -41,8 +41,6 @@ public class ResultsService {
     }
 
     private RowResultsGroupView mapBusinessResultsForGroupToViewResultsForGroup(ResultsForRunnersGroup resultsForRunnersGroup){
-        ResultsMatrixFromBusinessToViewMapper mapper = new ResultsMatrixFromBusinessToViewMapper();
-        mapper.doMapping(resultsForRunnersGroup);
-        return mapper.getResultsMatrix();
+        return new ResultsMatrixFromBusinessToViewMapper().doMapping(resultsForRunnersGroup);
     }
 }

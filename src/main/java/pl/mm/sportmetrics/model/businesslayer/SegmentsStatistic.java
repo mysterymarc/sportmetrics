@@ -8,7 +8,6 @@ public class SegmentsStatistic {
     private String title;
     private List<SingleStatistic> segmentSingleStatistics = new ArrayList<SingleStatistic>();
 
-
     public String getTitle() {
         return title;
     }
@@ -27,7 +26,7 @@ public class SegmentsStatistic {
 
     public void addStatistic(Time value){
         SingleStatistic singleStatistic = new SingleStatistic();
-        singleStatistic.value = value;
+        singleStatistic.setValue(value);
         segmentSingleStatistics.add(singleStatistic);
     }
 
@@ -38,4 +37,11 @@ public class SegmentsStatistic {
     public SingleStatistic getStatistic(int segmentNumber){
         return segmentSingleStatistics.get(segmentNumber);
     }
+
+    public void evaluateStatisticsWithWinLossDescriptions(SegmentsStatistic comparedTo){
+        for (int i = 0; i < segmentsNumber(); i++) {
+            getStatistic(i).evaluateDescriptionWithWinLossByComparison(comparedTo.getStatistic(i));
+        }
+    }
+
 }

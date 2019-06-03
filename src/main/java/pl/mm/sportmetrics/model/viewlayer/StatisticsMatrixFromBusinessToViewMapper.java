@@ -8,7 +8,7 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RepoToViewOfStatisticsMatrixMapper {
+public class StatisticsMatrixFromBusinessToViewMapper {
 
     private AnalysisResultsGroupView analysisRows = new AnalysisResultsGroupView();
 
@@ -16,8 +16,7 @@ public class RepoToViewOfStatisticsMatrixMapper {
         return analysisRows;
     }
 
-
-    public void doMapping(SegmentsStatisticsGroup segmentsStatisticsGroup) {
+    public AnalysisResultsGroupView doMapping(SegmentsStatisticsGroup segmentsStatisticsGroup) {
 
         for (SegmentsStatistic modelStatisticRow : segmentsStatisticsGroup) {
             AnalysisResultRow viewRow = new AnalysisResultRow();
@@ -25,6 +24,7 @@ public class RepoToViewOfStatisticsMatrixMapper {
             viewRow.setSegmentResults(mapModelStatToViewStat(modelStatisticRow.getSegmentSingleStatistics()));
             analysisRows.add(viewRow);
         }
+        return analysisRows;
     }
 
     private List<AnalysisResultForSegment> mapModelStatToViewStat(List<SingleStatistic> modelStats){
