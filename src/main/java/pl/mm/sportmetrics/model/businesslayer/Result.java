@@ -4,8 +4,8 @@ import java.sql.Time;
 
 public class Result {
 
-    Time time;
-    int position;
+    private Time time;
+    private int position;
 
     public Result(Time time, int position) {
         this.time = time;

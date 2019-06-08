@@ -1,9 +1,14 @@
 package pl.mm.sportmetrics.services;
 
 import org.springframework.stereotype.Service;
+import pl.mm.sportmetrics.logic.Average;
+import pl.mm.sportmetrics.logic.Calculation;
 import pl.mm.sportmetrics.model.businesslayer.*;
 import pl.mm.sportmetrics.model.viewlayer.*;
 import pl.mm.sportmetrics.repository.Repository;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Service
@@ -60,23 +65,26 @@ public class AnalysisService {
     }
 
     private AnalysisResultsGroupsCollectionView getAnalyses(ResultsForRunnersGroupsCollection resultsGroupsCollection) {
-        SegmentsStatisticsGroupsCollection segmentsStatisticsGroupsCollection = new SegmentsStatisticsGroupsCollection();
-        SegmentsStatisticsGroupFactory segmentsStatisticsGroupFactory = new SegmentsStatisticsGroupFactory();
+        SegmentsStatisticsForGroupsCollection segmentsStatisticsForGroupsCollection = new SegmentsStatisticsForGroupsCollection();
+
+        List<Calculation> calculations = new ArrayList<>();
+        calculations.add(new Average());
+        SegmentsStatisticsForGroupFactory segmentsStatisticsForGroupFactory = new SegmentsStatisticsForGroupFactory(calculations);
 
         for (ResultsForRunnersGroup group : resultsGroupsCollection) {
-            segmentsStatisticsGroupsCollection.add(segmentsStatisticsGroupFactory.getObject(group));
+            segmentsStatisticsForGroupsCollection.add(segmentsStatisticsForGroupFactory.getObject(group));
         }
 
-        segmentsStatisticsGroupsCollection.evaluateStatisticsWithWinLossDescriptions(0,1);
+        segmentsStatisticsForGroupsCollection.evaluateStatisticsWithWinLossDescriptions(0,1);
 
         AnalysisResultsGroupsCollectionView detailAnalysisRowForGroups = new AnalysisResultsGroupsCollectionView();
-        for (SegmentsStatisticsGroup group : segmentsStatisticsGroupsCollection) {
+        for (SegmentsStatisticsForGroup group : segmentsStatisticsForGroupsCollection) {
             detailAnalysisRowForGroups.add(mapBusinessResultsForGroupToViewResultsForGroup(group));
         }
         return detailAnalysisRowForGroups;
     }
     //TODO: przydaloby sie jakies uwspolnienie tego mapowania z tym dla resultow - wyglada identycznie
-    private AnalysisResultsGroupView mapBusinessResultsForGroupToViewResultsForGroup(SegmentsStatisticsGroup group){
+    private AnalysisResultsGroupView mapBusinessResultsForGroupToViewResultsForGroup(SegmentsStatisticsForGroup group){
         return new StatisticsMatrixFromBusinessToViewMapper().doMapping(group);
     }
 }

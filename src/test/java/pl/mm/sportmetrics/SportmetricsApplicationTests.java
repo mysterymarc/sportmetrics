@@ -4,11 +4,15 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import pl.mm.sportmetrics.logic.Calculation;
+import pl.mm.sportmetrics.logic.Average;
+import pl.mm.sportmetrics.logic.TimeList;
+import pl.mm.sportmetrics.logic.TimeMatrix;
 import pl.mm.sportmetrics.model.businesslayer.*;
 import pl.mm.sportmetrics.model.viewlayer.*;
 
 import java.sql.Time;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -21,35 +25,26 @@ public class SportmetricsApplicationTests {
     }
 
     @Test
-    public void givenResultsForRunnersGroupWhenGroupAvgCalculatedThenReturnedCorrectResult(){
+    public void givenResultsForRunnersGroupWhenGroupAvgCalculatedThenReturnedCorrectResult() {
         //given
-        //TODO: Czy given moze byc az tak rozbudowany?
-        ResultsForRunnersGroup group = new ResultsForRunnersGroup();
-        ResultsForRunner runner1 = new ResultsForRunner();
-        Result result1 = new Result();
-        Result result2 = new Result();
-        result1.setTime(Time.valueOf("00:00:20"));
-        result2.setTime(Time.valueOf("00:01:00"));
-        runner1.addSegmentResult(result1);
-        runner1.addSegmentResult(result2);
-        ResultsForRunner runner2 = new ResultsForRunner();
-        Result result3 = new Result();
-        Result result4 = new Result();
-        result3.setTime(Time.valueOf("00:00:40"));
-        result4.setTime(Time.valueOf("00:03:00"));
-        runner2.addSegmentResult(result3);
-        runner2.addSegmentResult(result4);
-        group.add(runner1);
-        group.add(runner2);
+        List<Time> firstRow = new ArrayList<>();
+        firstRow.add(Time.valueOf("00:00:20"));
+        firstRow.add(Time.valueOf("00:01:00"));
+        List<Time> secondRow = new ArrayList<>();
+        secondRow.add(Time.valueOf("00:00:40"));
+        secondRow.add(Time.valueOf("00:03:00"));
+        TimeMatrix times = new TimeMatrix();
+        times.addRow(firstRow);
+        times.addRow(secondRow);
         //when
-        SegmentsStatistic statistic = new Calculation().getAvgFromResults(group);
+        TimeList statistic = new Average().getStatistic(times);
         //then
-        assertThat(statistic.getStatistic(0).getValue()).isEqualTo(Time.valueOf("00:00:30"));
-        assertThat(statistic.getStatistic(1).getValue()).isEqualTo(Time.valueOf("00:02:00"));
+        assertThat(statistic.getElement(0)).isEqualTo(Time.valueOf("00:00:30"));
+        assertThat(statistic.getElement(1)).isEqualTo(Time.valueOf("00:02:00"));
     }
 
     @Test
-    public void givenStatisticsWhenWinLossEvaluatedThenReturnedCorrectResult(){
+    public void givenStatisticsWhenWinLossEvaluatedThenReturnedCorrectResult() {
         //given
         SegmentsStatistic stat1 = new SegmentsStatistic();
         SegmentsStatistic stat2 = new SegmentsStatistic();
@@ -79,8 +74,9 @@ public class SportmetricsApplicationTests {
     }
 
     @Test
-    public void givenResultsBusinessModelWhenMappingToViewThenCorrectViewModelReturned(){
+    public void givenResultsBusinessModelWhenMappingToViewThenCorrectViewModelReturned() {
         //given
+        //TODO: Czy given moze byc az tak rozbudowany?
         ResultsForRunnersGroup group = new ResultsForRunnersGroup();
         ResultsForRunner runner1 = new ResultsForRunner();
         runner1.setCompetitorId(25L);
@@ -175,11 +171,11 @@ public class SportmetricsApplicationTests {
     public void givenStatisticsBusinessModelWhenMappingToViewThenCorrectViewModelReturned() {
 
         SegmentsStatistic row = new SegmentsStatistic();
-        row.addStatistic(Time.valueOf("00:00:03"),"win");
-        row.addStatistic(Time.valueOf("01:00:00"),"loss");
-        row.addStatistic(Time.valueOf("00:00:00"),"draw");
+        row.addStatistic(Time.valueOf("00:00:03"), "win");
+        row.addStatistic(Time.valueOf("01:00:00"), "loss");
+        row.addStatistic(Time.valueOf("00:00:00"), "draw");
         row.setTitle("Example title");
-        SegmentsStatisticsGroup group = new SegmentsStatisticsGroup();
+        SegmentsStatisticsForGroup group = new SegmentsStatisticsForGroup();
         group.add(row);
 
         AnalysisResultsGroupView analyseView = new StatisticsMatrixFromBusinessToViewMapper().doMapping(group);

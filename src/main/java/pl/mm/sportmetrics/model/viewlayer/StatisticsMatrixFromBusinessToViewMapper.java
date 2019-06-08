@@ -1,7 +1,7 @@
 package pl.mm.sportmetrics.model.viewlayer;
 
 import pl.mm.sportmetrics.model.businesslayer.SegmentsStatistic;
-import pl.mm.sportmetrics.model.businesslayer.SegmentsStatisticsGroup;
+import pl.mm.sportmetrics.model.businesslayer.SegmentsStatisticsForGroup;
 import pl.mm.sportmetrics.model.businesslayer.SingleStatistic;
 
 import java.sql.Time;
@@ -16,9 +16,9 @@ public class StatisticsMatrixFromBusinessToViewMapper {
         return analysisRows;
     }
 
-    public AnalysisResultsGroupView doMapping(SegmentsStatisticsGroup segmentsStatisticsGroup) {
+    public AnalysisResultsGroupView doMapping(SegmentsStatisticsForGroup segmentsStatisticsForGroup) {
 
-        for (SegmentsStatistic modelStatisticRow : segmentsStatisticsGroup) {
+        for (SegmentsStatistic modelStatisticRow : segmentsStatisticsForGroup) {
             AnalysisResultRow viewRow = new AnalysisResultRow();
             viewRow.setTitle(modelStatisticRow.getTitle());
             viewRow.setSegmentResults(mapModelStatToViewStat(modelStatisticRow.getSegmentSingleStatistics()));

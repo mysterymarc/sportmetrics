@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class SegmentsStatisticsGroup implements Iterable<SegmentsStatistic> {
+public class SegmentsStatisticsForGroup implements Iterable<SegmentsStatistic> {
 
     private List<SegmentsStatistic> allSegmentStatistics = new ArrayList<SegmentsStatistic>();
     public boolean add(SegmentsStatistic row){
