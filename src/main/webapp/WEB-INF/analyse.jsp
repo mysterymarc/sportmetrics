@@ -33,7 +33,7 @@
             <c:forEach items="${model.analyses.analysesGroup}" var="group" varStatus="grouploop">
             <c:forEach items="${group.analyses}" var="row" varStatus="rowloop">
             <c:forEach items="${row.segmentResults}" var="single" varStatus="celloop">
-            cells[${grouploop.index*fn:length(row.segmentResults)}+${rowloop.index*fn:length(row.segmentResults)}+${celloop.index}]
+            cells[${grouploop.index*fn:length(row.segmentResults)*fn:length(group.analyses)}+${rowloop.index*fn:length(row.segmentResults)}+${celloop.index}]
                 .setAttribute("bgcolor", getProperColor('${single.valueAttribute}'));
             </c:forEach>
             </c:forEach>

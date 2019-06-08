@@ -3,6 +3,7 @@ package pl.mm.sportmetrics.services;
 import org.springframework.stereotype.Service;
 import pl.mm.sportmetrics.logic.Average;
 import pl.mm.sportmetrics.logic.Calculation;
+import pl.mm.sportmetrics.logic.Median;
 import pl.mm.sportmetrics.model.businesslayer.*;
 import pl.mm.sportmetrics.model.viewlayer.*;
 import pl.mm.sportmetrics.repository.Repository;
@@ -69,6 +70,7 @@ public class AnalysisService {
 
         List<Calculation> calculations = new ArrayList<>();
         calculations.add(new Average());
+        //calculations.add(new Median());
         SegmentsStatisticsForGroupFactory segmentsStatisticsForGroupFactory = new SegmentsStatisticsForGroupFactory(calculations);
 
         for (ResultsForRunnersGroup group : resultsGroupsCollection) {
