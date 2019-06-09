@@ -3,8 +3,8 @@ package pl.mm.sportmetrics.dto.viewlayer;
 import java.util.Objects;
 
 public class SingleResultView {
-    public String time;
-    public String position;
+    private String time;
+    private String position;
 
     public String getTime() {
         return time;

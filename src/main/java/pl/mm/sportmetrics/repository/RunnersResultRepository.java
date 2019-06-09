@@ -19,9 +19,9 @@ import java.util.List;
 @Service
 public class RunnersResultRepository {
 
-    private CompetitorDAO competitorDao;
-    private PartialResultDAO partialResultDao;
-    private TotalResultDAO totalResultDao;
+    private final CompetitorDAO competitorDao;
+    private final PartialResultDAO partialResultDao;
+    private final TotalResultDAO totalResultDao;
 
     public RunnersResultRepository(CompetitorDAO competitorDao, PartialResultDAO partialResultDao, TotalResultDAO totalResultDao) {
         this.competitorDao = competitorDao;

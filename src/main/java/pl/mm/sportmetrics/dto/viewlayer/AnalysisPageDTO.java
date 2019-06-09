@@ -7,10 +7,10 @@ import java.util.Objects;
 
 public class AnalysisPageDTO {
 
-    Competition competition;
-    Segments segments;
-    RowResultsGroupsColletionView results;
-    AnalysisResultsGroupsCollectionView analyses;
+    private Competition competition;
+    private Segments segments;
+    private RowResultsGroupsColletionView results;
+    private AnalysisResultsGroupsCollectionView analyses;
 
     public AnalysisPageDTO() {
     }

@@ -5,7 +5,7 @@ import java.util.List;
 
 public class IdentifiersOfResultsGroup {
 
-    private List<Long> identifiers = new ArrayList<Long>();
+    private final List<Long> identifiers = new ArrayList<>();
 
     public boolean add(Long identifier){
         return identifiers.add(identifier);

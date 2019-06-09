@@ -9,11 +9,11 @@ import java.util.List;
 
 public class EventEntitiesSet {
 
-    public CompetitionEntity competition = new CompetitionEntity();
-    public List<CompetitorEntity> competitors = new ArrayList<>();
-    public List<SegmentEntity> segments = new ArrayList<>();
-    public List<TotalResultEntity> totalResults = new ArrayList<>();
-    public List<PartialResultEntity> partialResults = new ArrayList<>();
+    public final CompetitionEntity competition = new CompetitionEntity();
+    public final List<CompetitorEntity> competitors = new ArrayList<>();
+    public final List<SegmentEntity> segments = new ArrayList<>();
+    public final List<TotalResultEntity> totalResults = new ArrayList<>();
+    public final List<PartialResultEntity> partialResults = new ArrayList<>();
 
     public EventEntitiesSet(EventDTO eventDTO) {
         mapCompetition(eventDTO);

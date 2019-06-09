@@ -6,7 +6,7 @@ import java.util.List;
 
 public class IdentifiersOfResultsGroupsCollection implements Iterable<IdentifiersOfResultsGroup> {
 
-    List<IdentifiersOfResultsGroup> identifiersGroups = new ArrayList<IdentifiersOfResultsGroup>();
+    private final List<IdentifiersOfResultsGroup> identifiersGroups = new ArrayList<>();
 
     public boolean add(IdentifiersOfResultsGroup identifiersGroup){
         return identifiersGroups.add(identifiersGroup);

@@ -15,11 +15,11 @@ import pl.mm.sportmetrics.repository.SegmentRepository;
 @Service
 public class ResultsService {
 
-    private RunnersResultRepository runnersResultRepository;
+    private final RunnersResultRepository runnersResultRepository;
 
-    private CompetitionRepository competitionRepository;
+    private final CompetitionRepository competitionRepository;
 
-    private SegmentRepository segmentRepository;
+    private final SegmentRepository segmentRepository;
 
     public ResultsService(RunnersResultRepository runnersResultRepository, CompetitionRepository competitionRepository, SegmentRepository segmentRepository) {
         this.runnersResultRepository = runnersResultRepository;

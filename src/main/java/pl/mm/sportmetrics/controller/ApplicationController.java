@@ -22,13 +22,13 @@ import java.util.List;
 @Controller
 public class ApplicationController {
 
-    private EventsService eventsService;
+    private final EventsService eventsService;
 
-    private ResultsService resultsService;
+    private final ResultsService resultsService;
 
-    private AnalysisService analysisService;
+    private final AnalysisService analysisService;
 
-    private ImportService importService;
+    private final ImportService importService;
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 

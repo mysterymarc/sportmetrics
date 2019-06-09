@@ -51,15 +51,4 @@ public class TotalResultEntity {
         return delayTime;
     }
 
-    public TotalResultEntity(){
-
-    }
-
-    public TotalResultEntity(TotalResultEntity result){
-        this.id = result.id;
-        this.position = result.position;
-        this.totalTime = (Time) result.totalTime.clone();
-        this.delayTime = (Time) result.delayTime.clone();
-        this.competitor = new CompetitorEntity(result.competitor);
-    }
 }

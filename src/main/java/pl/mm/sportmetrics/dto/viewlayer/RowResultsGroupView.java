@@ -12,7 +12,7 @@ public class RowResultsGroupView {
         this.rowsView = rowsView;
     }
 
-    private List<RowResultView> rowsView = new ArrayList<RowResultView>();
+    private List<RowResultView> rowsView = new ArrayList<>();
 
     public List<RowResultView> getRowsView() {
         return rowsView;

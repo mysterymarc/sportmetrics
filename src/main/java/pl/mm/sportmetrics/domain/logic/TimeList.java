@@ -7,7 +7,7 @@ import java.util.List;
 
 public class TimeList implements Iterable<Time> {
 
-    private List<Time> row;
+    private final List<Time> row;
 
     public TimeList(){
         this.row = new ArrayList<>();

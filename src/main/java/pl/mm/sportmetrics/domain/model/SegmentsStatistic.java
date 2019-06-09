@@ -6,7 +6,7 @@ import java.util.List;
 
 public class SegmentsStatistic {
     private String title;
-    private List<SingleStatistic> segmentSingleStatistics = new ArrayList<SingleStatistic>();
+    private List<SingleStatistic> segmentSingleStatistics = new ArrayList<>();
 
     public String getTitle() {
         return title;
@@ -34,16 +34,12 @@ public class SegmentsStatistic {
         segmentSingleStatistics.add(singleStatistic);
     }
 
-    public int segmentsNumber(){
-        return segmentSingleStatistics.size();
-    }
-
-    public SingleStatistic getStatistic(int segmentNumber){
+    private SingleStatistic getStatistic(int segmentNumber){
         return segmentSingleStatistics.get(segmentNumber);
     }
 
     public void evaluateStatisticsWithWinLossDescriptions(SegmentsStatistic comparedTo){
-        for (int i = 0; i < segmentsNumber(); i++) {
+        for (int i = 0; i < segmentSingleStatistics.size(); i++) {
             getStatistic(i).evaluateDescriptionWithWinLossByComparison(comparedTo.getStatistic(i));
         }
     }

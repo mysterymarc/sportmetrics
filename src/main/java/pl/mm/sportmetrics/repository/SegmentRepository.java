@@ -8,7 +8,7 @@ import pl.mm.sportmetrics.repository.entity.EventEntitiesSet;
 @Service
 public class SegmentRepository {
 
-    private SegmentDAO segmentDao;
+    private final SegmentDAO segmentDao;
 
     public SegmentRepository(SegmentDAO segmentDao) {
         this.segmentDao = segmentDao;

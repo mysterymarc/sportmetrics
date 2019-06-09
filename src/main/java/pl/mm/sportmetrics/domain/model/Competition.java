@@ -3,8 +3,8 @@ package pl.mm.sportmetrics.domain.model;
 import java.util.Objects;
 
 public class Competition {
-    public Long id;
-    public String name;
+    private Long id;
+    private String name;
 
     public Competition(Long id, String name) {
         this.id = id;

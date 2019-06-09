@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class AnalysisResultsGroupsCollectionView {
 
-    List<AnalysisResultsGroupView> analysesGroup = new ArrayList<AnalysisResultsGroupView>();
+    private List<AnalysisResultsGroupView> analysesGroup = new ArrayList<>();
 
     public AnalysisResultsGroupsCollectionView() {
     }

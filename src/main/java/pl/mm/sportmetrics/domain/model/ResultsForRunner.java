@@ -11,8 +11,8 @@ public class ResultsForRunner {
     private String competitorCity;
     private Time totalTime;
     private Time delayTime;
-    private List<Result> segmentResults = new ArrayList<Result>();
-    private List<Result> cumulativeResults = new ArrayList<Result>();
+    private List<Result> segmentResults = new ArrayList<>();
+    private List<Result> cumulativeResults = new ArrayList<>();
     private Long competitorId;
     private Long totalResultId;
 

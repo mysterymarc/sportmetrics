@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class RowResultsGroupsColletionView {
 
-    private List<RowResultsGroupView> rowsGroupsView = new ArrayList<RowResultsGroupView>();
+    private List<RowResultsGroupView> rowsGroupsView = new ArrayList<>();
 
     public RowResultsGroupsColletionView() {
     }

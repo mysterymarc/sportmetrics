@@ -16,11 +16,11 @@ import java.util.List;
 @Service
 public class AnalysisService {
 
-    private RunnersResultRepository runnersResultRepository;
+    private final RunnersResultRepository runnersResultRepository;
 
-    private CompetitionRepository competitionRepository;
+    private final CompetitionRepository competitionRepository;
 
-    private SegmentRepository segmentRepository;
+    private final SegmentRepository segmentRepository;
 
     public AnalysisService(RunnersResultRepository runnersResultRepository, CompetitionRepository competitionRepository, SegmentRepository segmentRepository) {
         this.runnersResultRepository = runnersResultRepository;

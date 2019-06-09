@@ -10,7 +10,7 @@ import pl.mm.sportmetrics.repository.entity.EventEntitiesSet;
 @Service
 public class CompetitionRepository {
 
-    private CompetitionDAO competitionDao;
+    private final CompetitionDAO competitionDao;
 
     public CompetitionRepository(CompetitionDAO competitionDao) {
         this.competitionDao = competitionDao;

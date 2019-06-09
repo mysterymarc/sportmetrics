@@ -7,7 +7,7 @@ import pl.mm.sportmetrics.repository.CompetitionRepository;
 @Service
 public class EventsService {
 
-    private CompetitionRepository competitionRepository;
+    private final CompetitionRepository competitionRepository;
 
     public EventsService(CompetitionRepository competitionRepository) {
         this.competitionRepository = competitionRepository;

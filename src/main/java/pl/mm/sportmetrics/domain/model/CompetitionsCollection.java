@@ -5,7 +5,7 @@ import java.util.List;
 
 public class CompetitionsCollection{
 
-    private List<Competition> competitions = new ArrayList<Competition>();
+    private List<Competition> competitions = new ArrayList<>();
 
     public List<Competition> getCompetitions() {
         return competitions;

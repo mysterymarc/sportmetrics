@@ -6,7 +6,7 @@ import java.util.List;
 
 public class TimeMatrix {
 
-    private List<TimeList> matrix = new ArrayList<>();
+    private final List<TimeList> matrix = new ArrayList<>();
 
     public void addRow(List<Time> row){
         matrix.add(new TimeList(row));
@@ -20,11 +20,7 @@ public class TimeMatrix {
         return matrix.get(rowNum).getElement(colNum);
     }
 
-    public TimeList getRow(int i){
-        return matrix.get(i);
-    }
-
-    public TimeList getColumn(int i){
+    private TimeList getColumn(int i){
         TimeList column = new TimeList();
         for(TimeList row : matrix){
             column.addElement(row.getElement(i));
@@ -34,7 +30,7 @@ public class TimeMatrix {
 
     public List<TimeList> getColumns(){
         List<TimeList> columns = new ArrayList<>();
-        for(int i=0; i < getRow(0).size();i++){
+        for(int i=0; i < matrix.get(0).size();i++){
             columns.add(getColumn(i));
         }
         return columns;

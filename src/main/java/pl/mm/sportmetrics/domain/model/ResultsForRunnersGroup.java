@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ResultsForRunnersGroup implements Iterable<ResultsForRunner> {
 
-    public List<ResultsForRunner> resultsForRunners = new ArrayList<ResultsForRunner>();
+    public final List<ResultsForRunner> resultsForRunners = new ArrayList<>();
 
 
     public boolean add(ResultsForRunner row){

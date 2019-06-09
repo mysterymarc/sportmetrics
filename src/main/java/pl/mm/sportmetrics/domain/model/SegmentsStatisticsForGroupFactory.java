@@ -10,7 +10,7 @@ import java.util.List;
 
 public class SegmentsStatisticsForGroupFactory {
 
-    private List<Calculation> calculationStrategies;
+    private final List<Calculation> calculationStrategies;
 
     public SegmentsStatisticsForGroupFactory(List<Calculation> calculationStrategies){
         this.calculationStrategies = calculationStrategies;

@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ResultsMatrixFromBusinessToViewMapper {
 
-    private RowResultsGroupView resultRows = new RowResultsGroupView();
+    private final RowResultsGroupView resultRows = new RowResultsGroupView();
 
 
     public RowResultsGroupView getResultsMatrix() {

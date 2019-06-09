@@ -4,9 +4,9 @@ import pl.mm.sportmetrics.domain.model.Segments;
 
 public class ResultsPageDTO {
 
-    Competition competition;
-    Segments segments;
-    RowResultsGroupView resultRows;
+    private Competition competition;
+    private Segments segments;
+    private RowResultsGroupView resultRows;
 
     public Competition getCompetition() {
         return competition;
