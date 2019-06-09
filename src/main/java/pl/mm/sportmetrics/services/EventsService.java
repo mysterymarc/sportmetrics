@@ -1,25 +1,21 @@
 package pl.mm.sportmetrics.services;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import pl.mm.sportmetrics.dto.viewlayer.EventsPageDTO;
-import pl.mm.sportmetrics.repository.Repository;
+import pl.mm.sportmetrics.repository.CompetitionRepository;
 
 @Service
 public class EventsService {
 
-    private Repository repository;
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    private CompetitionRepository competitionRepository;
 
-    public EventsService(Repository repository){
-        this.repository = repository;
+    public EventsService(CompetitionRepository competitionRepository) {
+        this.competitionRepository = competitionRepository;
     }
 
     public EventsPageDTO getDataForView(){
         EventsPageDTO events = new EventsPageDTO();
-        events.setEvents(repository.findAllCompetitions());
+        events.setEvents(competitionRepository.findAllCompetitions());
         return events;
     }
-
 }

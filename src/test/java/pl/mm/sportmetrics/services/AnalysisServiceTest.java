@@ -7,7 +7,9 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import pl.mm.sportmetrics.domain.model.*;
 import pl.mm.sportmetrics.dto.viewlayer.*;
-import pl.mm.sportmetrics.repository.Repository;
+import pl.mm.sportmetrics.repository.CompetitionRepository;
+import pl.mm.sportmetrics.repository.RunnersResultRepository;
+import pl.mm.sportmetrics.repository.SegmentRepository;
 
 import java.util.Arrays;
 
@@ -18,13 +20,19 @@ import static org.mockito.Mockito.when;
 public class AnalysisServiceTest {
 
     @Mock
-    private Repository repository;
+    private RunnersResultRepository runnersResultRepository;
+
+    @Mock
+    private CompetitionRepository competitionRepository;
+
+    @Mock
+    private SegmentRepository segmentRepository;
 
     private AnalysisService analysisService;
 
     @Before
     public void setup() {
-        analysisService = new AnalysisService(repository);
+        analysisService = new AnalysisService(runnersResultRepository, competitionRepository, segmentRepository);
     }
 
     @Test
@@ -59,15 +67,15 @@ public class AnalysisServiceTest {
 
     private void givenRepositoryReturnsResultsForRunnersGroups(IdentifiersOfResultsGroupsCollection groupIdsCollection) {
         IdentifiersOfResultsGroup groupId = groupIdsCollection.iterator().next();
-        when(repository.findResultsByTotalResultIds(groupId)).thenReturn(givenResultsForRunnersGroup());
+        when(runnersResultRepository.findResultsByTotalResultIds(groupId)).thenReturn(givenResultsForRunnersGroup());
     }
 
     private void givenRepositoryReturnsCompetition(Long competitionId, String competitionName) {
-        when(repository.getCompetition(competitionId)).thenReturn(new Competition(competitionId, competitionName));
+        when(competitionRepository.findCompetition(competitionId)).thenReturn(new Competition(competitionId, competitionName));
     }
 
     private void givenRepositoryReturnsSegments(Long competitionId, String segmentName) {
-        when(repository.getSegments(competitionId)).thenReturn(new Segments(Arrays.asList(segmentName)));
+        when(segmentRepository.findAllSegments(competitionId)).thenReturn(new Segments(Arrays.asList(segmentName)));
     }
 
     private ResultsForRunnersGroup givenResultsForRunnersGroup() {

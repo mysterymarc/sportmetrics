@@ -11,15 +11,15 @@ import java.nio.charset.StandardCharsets;
 public class JsonExternalDataMapper implements ExternalDataMapper{
 
     @Override
-    public Event readFile(MultipartFile file) {
+    public EventDTO readFile(MultipartFile file) {
 
-        Event receivedEvent;
+        EventDTO receivedEventDTO;
         try {
             InputStreamReader stream = new InputStreamReader(file.getInputStream(), StandardCharsets.UTF_8);
-            receivedEvent = new ObjectMapper().readValue(stream, Event.class);
+            receivedEventDTO = new ObjectMapper().readValue(stream, EventDTO.class);
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
-        return receivedEvent;
+        return receivedEventDTO;
     }
 }

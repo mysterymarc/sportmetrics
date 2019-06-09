@@ -6,7 +6,7 @@ public class HtmlExternalDataMapper implements ExternalDataMapper{
 
 
     @Override
-    public Event readFile(MultipartFile file) {
-        return new Event();     //not a real implementation it's just a shell for training purposes
+    public EventDTO readFile(MultipartFile file) {
+        return new EventDTO();     //not a real implementation it's just a shell for training purposes
     }
 }

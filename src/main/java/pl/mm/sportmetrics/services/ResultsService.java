@@ -7,17 +7,25 @@ import pl.mm.sportmetrics.domain.model.Segments;
 import pl.mm.sportmetrics.dto.viewlayer.ResultsMatrixFromBusinessToViewMapper;
 import pl.mm.sportmetrics.dto.viewlayer.ResultsPageDTO;
 import pl.mm.sportmetrics.dto.viewlayer.RowResultsGroupView;
-import pl.mm.sportmetrics.repository.Repository;
+import pl.mm.sportmetrics.repository.CompetitionRepository;
+import pl.mm.sportmetrics.repository.RunnersResultRepository;
+import pl.mm.sportmetrics.repository.SegmentRepository;
 
 
 @Service
 public class ResultsService {
 
-    private Repository repository;
+    private RunnersResultRepository runnersResultRepository;
 
-    public ResultsService(Repository repository){
-        this.repository = repository;
-     }
+    private CompetitionRepository competitionRepository;
+
+    private SegmentRepository segmentRepository;
+
+    public ResultsService(RunnersResultRepository runnersResultRepository, CompetitionRepository competitionRepository, SegmentRepository segmentRepository) {
+        this.runnersResultRepository = runnersResultRepository;
+        this.competitionRepository = competitionRepository;
+        this.segmentRepository = segmentRepository;
+    }
 
     public ResultsPageDTO getDataForView(Long competitionId) {
         ResultsPageDTO results = new ResultsPageDTO();
@@ -28,15 +36,15 @@ public class ResultsService {
     }
 
     private Competition getCompetition(Long competitionId) {
-        return repository.getCompetition(competitionId);
+        return competitionRepository.findCompetition(competitionId);
     }
 
     private Segments getSegments(Long competitionId) {
-        return repository.getSegments(competitionId);
+        return segmentRepository.findAllSegments(competitionId);
     }
 
     private RowResultsGroupView getResults(Long competitionId) {
-        ResultsForRunnersGroup resultsForRunnersGroup = repository.findResultsByCompetitionId(competitionId);
+        ResultsForRunnersGroup resultsForRunnersGroup = runnersResultRepository.findResultsByCompetitionId(competitionId);
         return mapBusinessResultsForGroupToViewResultsForGroup(resultsForRunnersGroup);
     }
 

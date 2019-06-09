@@ -8,10 +8,9 @@ import java.util.Objects;
 
 public class Segments implements Iterable<String>{
 
-    List<String> segments = new ArrayList<String>();
+    private List<String> segments = new ArrayList<>();
 
     public Segments(){
-
     }
 
     public Segments(List<String> segments){

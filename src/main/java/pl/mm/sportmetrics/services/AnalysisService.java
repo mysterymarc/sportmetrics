@@ -5,7 +5,9 @@ import pl.mm.sportmetrics.domain.logic.Average;
 import pl.mm.sportmetrics.domain.logic.Calculation;
 import pl.mm.sportmetrics.domain.model.*;
 import pl.mm.sportmetrics.dto.viewlayer.*;
-import pl.mm.sportmetrics.repository.Repository;
+import pl.mm.sportmetrics.repository.CompetitionRepository;
+import pl.mm.sportmetrics.repository.RunnersResultRepository;
+import pl.mm.sportmetrics.repository.SegmentRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,10 +16,16 @@ import java.util.List;
 @Service
 public class AnalysisService {
 
-    private Repository repository;
+    private RunnersResultRepository runnersResultRepository;
 
-    public AnalysisService(Repository repository){
-        this.repository = repository;
+    private CompetitionRepository competitionRepository;
+
+    private SegmentRepository segmentRepository;
+
+    public AnalysisService(RunnersResultRepository runnersResultRepository, CompetitionRepository competitionRepository, SegmentRepository segmentRepository) {
+        this.runnersResultRepository = runnersResultRepository;
+        this.competitionRepository = competitionRepository;
+        this.segmentRepository = segmentRepository;
     }
 
     public AnalysisPageDTO getDataForView(Long competitionId, IdentifiersOfResultsGroupsCollection identifiersGroupsCollection) {
@@ -39,17 +47,17 @@ public class AnalysisService {
         ResultsForRunnersGroupsCollection resultsForRunnersGroupsCollection = new ResultsForRunnersGroupsCollection();
 
         identifiersGroupsCollection.forEach(collection ->
-                resultsForRunnersGroupsCollection.add(repository.findResultsByTotalResultIds(collection)));
+                resultsForRunnersGroupsCollection.add(runnersResultRepository.findResultsByTotalResultIds(collection)));
 
         return resultsForRunnersGroupsCollection;
     }
 
     private Competition getCompetition(Long competitionId) {
-        return repository.getCompetition(competitionId);
+        return competitionRepository.findCompetition(competitionId);
     }
 
     private Segments getSegments(Long competitionId) {
-        return repository.getSegments(competitionId);
+        return segmentRepository.findAllSegments(competitionId);
     }
 
     private RowResultsGroupsColletionView getResults(ResultsForRunnersGroupsCollection resultsGroupsCollection) {
