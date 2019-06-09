@@ -29,7 +29,7 @@ public class SegmentsStatistic {
         segmentSingleStatistics.add(singleStatistic);
     }
 
-    public void addStatistic(Time value, String description){
+    public void addStatistic(Time value, Score description){
         SingleStatistic singleStatistic = new SingleStatistic(value,description);
         segmentSingleStatistics.add(singleStatistic);
     }
@@ -39,7 +39,7 @@ public class SegmentsStatistic {
         segmentSingleStatistics.add(singleStatistic);
     }
 
-    public void addStatistic(String time, String description){
+    public void addStatistic(String time, Score description){
         SingleStatistic singleStatistic = new SingleStatistic(Time.valueOf(time),description);
         segmentSingleStatistics.add(singleStatistic);
     }

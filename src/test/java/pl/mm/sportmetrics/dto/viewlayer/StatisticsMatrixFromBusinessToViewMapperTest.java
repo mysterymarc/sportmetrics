@@ -1,6 +1,7 @@
 package pl.mm.sportmetrics.dto.viewlayer;
 
 import org.junit.Test;
+import pl.mm.sportmetrics.domain.model.Score;
 import pl.mm.sportmetrics.domain.model.SegmentsStatistic;
 import pl.mm.sportmetrics.domain.model.SegmentsStatisticsForGroup;
 
@@ -29,9 +30,9 @@ public class StatisticsMatrixFromBusinessToViewMapperTest {
     private SegmentsStatisticsForGroup givenStatisticsForGroup(){
         SegmentsStatisticsForGroup group = new SegmentsStatisticsForGroup();
         SegmentsStatistic row = new SegmentsStatistic();
-        row.addStatistic("00:00:03", "win");
-        row.addStatistic("01:00:00", "loss");
-        row.addStatistic("00:00:00", "draw");
+        row.addStatistic("00:00:03", Score.WIN);
+        row.addStatistic("01:00:00", Score.LOSS);
+        row.addStatistic("00:00:00", Score.DRAW);
         row.setTitle("Example title");
         group.add(row);
 

@@ -4,7 +4,7 @@ import java.sql.Time;
 
 public class SingleStatistic {
     private Time value;
-    private String description;
+    private Score description;
 
     public SingleStatistic(Time time){
         this.value = time;
@@ -14,7 +14,7 @@ public class SingleStatistic {
         this.value = Time.valueOf(time);
     }
 
-    public SingleStatistic(Time time, String description){
+    public SingleStatistic(Time time, Score description){
         this.value = time;
         this.description = description;
     }
@@ -28,22 +28,22 @@ public class SingleStatistic {
     }
 
     public String getDescription() {
-        return description;
+        return description.toString();
     }
 
     public void evaluateDescriptionWithWinLossByComparison(SingleStatistic comparedTo){
         if (this.getValue().equals(Time.valueOf("00:00:00")) && comparedTo.getValue().equals(Time.valueOf("00:00:00"))) {
-            description="draw";
+            description=Score.DRAW;
         } else if (this.getValue().equals(Time.valueOf("00:00:00"))) {
-            description="loss";
+            description=Score.LOSS;
         } else if (comparedTo.getValue().equals(Time.valueOf("00:00:00"))) {
-            description="win";
+            description=Score.WIN;
         } else if (this.getValue().getTime() > comparedTo.getValue().getTime()) {
-            description="loss";
+            description=Score.LOSS;
         } else if (this.getValue().getTime() < comparedTo.getValue().getTime()) {
-            description="win";
+            description=Score.WIN;
         } else if (this.getValue().getTime() == comparedTo.getValue().getTime()) {
-            description="draw";
+            description=Score.DRAW;
         }
     }
 

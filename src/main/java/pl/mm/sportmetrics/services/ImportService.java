@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import pl.mm.sportmetrics.dto.inputlayer.EventDTO;
 import pl.mm.sportmetrics.dto.inputlayer.ExternalDataMapperFactory;
+import pl.mm.sportmetrics.dto.inputlayer.InputFileType;
 import pl.mm.sportmetrics.repository.CompetitionRepository;
 import pl.mm.sportmetrics.repository.RunnersResultRepository;
 import pl.mm.sportmetrics.repository.SegmentRepository;
@@ -30,7 +31,7 @@ public class ImportService {
 
     public boolean importExternalData(MultipartFile jsonFile){
         try {
-            EventDTO receivedEventDTO = new ExternalDataMapperFactory().getMapper("json").readFile(jsonFile);
+            EventDTO receivedEventDTO = new ExternalDataMapperFactory().getMapper(InputFileType.JSON).readFile(jsonFile);
             storeEvent(receivedEventDTO);
             return true;
         } catch (UncheckedIOException e){

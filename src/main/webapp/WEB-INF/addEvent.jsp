@@ -44,7 +44,7 @@
     <br>
     <div class="row justify-content-center">
         <div class="card">
-            <h5 class="text-center m-2">Select JSON file with eventDTO's results</h5>
+            <h5 class="text-center m-2">Select JSON file with event's results</h5>
             <form action="uploadEventResults" method="post"
                   enctype="multipart/form-data">
                 <div class="custom-file w-75 p-2 m-5">
