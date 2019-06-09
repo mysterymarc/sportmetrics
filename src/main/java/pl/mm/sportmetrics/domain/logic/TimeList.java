@@ -42,4 +42,8 @@ public class TimeList implements Iterable<Time> {
         return row.add(time);
     }
 
+    public boolean add(String time) {
+        return row.add(Time.valueOf(time));
+    }
+
 }

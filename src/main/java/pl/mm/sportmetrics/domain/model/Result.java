@@ -6,7 +6,7 @@ public class Result {
 
     private Time time;
     private int position;
-//TODO: comment and in all places in code change to string version of constructor to eliminate this value of
+
     public Result(Time time, int position) {
         this.time = time;
         this.position = position;

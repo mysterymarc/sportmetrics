@@ -42,7 +42,7 @@ public class Average implements Calculation{
         TimeList avg = new TimeList();
         for (Long columnSum : columnSums) {
             if (columnSum.equals(Time.valueOf("00:00:00").getTime())) {
-                avg.add(Time.valueOf("00:00:00"));
+                avg.add("00:00:00");
             } else {
                 avg.add(new Time(columnSum / rowNumber));
             }

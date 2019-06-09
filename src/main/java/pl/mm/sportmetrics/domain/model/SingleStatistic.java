@@ -10,6 +10,10 @@ public class SingleStatistic {
         this.value = time;
     }
 
+    public SingleStatistic(String time){
+        this.value = Time.valueOf(time);
+    }
+
     public SingleStatistic(Time time, String description){
         this.value = time;
         this.description = description;

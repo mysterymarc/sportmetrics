@@ -92,7 +92,7 @@ public class AnalysisService {
         }
         return detailAnalysisRowForGroups;
     }
-    //TODO: przydaloby sie jakies uwspolnienie tego mapowania z tym dla resultow - wyglada identycznie
+
     private AnalysisResultsGroupView mapBusinessResultsForGroupToViewResultsForGroup(SegmentsStatisticsForGroup group){
         return new StatisticsMatrixFromBusinessToViewMapper().doMapping(group);
     }

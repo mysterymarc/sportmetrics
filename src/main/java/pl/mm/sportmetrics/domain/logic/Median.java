@@ -1,7 +1,5 @@
 package pl.mm.sportmetrics.domain.logic;
 
-import java.sql.Time;
-
 public class Median implements Calculation{
 
     @Override
@@ -19,7 +17,7 @@ public class Median implements Calculation{
         TimeList result = new TimeList();
 
         for(int i=0; i < matrix.getColumns().size() ; i++){
-            result.add(Time.valueOf("00:01:00"));
+            result.add("00:01:00");
         }
 
         return result;

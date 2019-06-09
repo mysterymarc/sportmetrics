@@ -34,6 +34,17 @@ public class SegmentsStatistic {
         segmentSingleStatistics.add(singleStatistic);
     }
 
+    public void addStatistic(String time){
+        SingleStatistic singleStatistic = new SingleStatistic(time);
+        segmentSingleStatistics.add(singleStatistic);
+    }
+
+    public void addStatistic(String time, String description){
+        SingleStatistic singleStatistic = new SingleStatistic(Time.valueOf(time),description);
+        segmentSingleStatistics.add(singleStatistic);
+    }
+
+
     private SingleStatistic getStatistic(int segmentNumber){
         return segmentSingleStatistics.get(segmentNumber);
     }
