@@ -3,11 +3,10 @@ package pl.mm.sportmetrics.repository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import pl.mm.sportmetrics.model.inputlayer.Event;
-import pl.mm.sportmetrics.model.businesslayer.*;
+import pl.mm.sportmetrics.domain.model.*;
+import pl.mm.sportmetrics.dto.inputlayer.Event;
 import pl.mm.sportmetrics.repository.dao.*;
 import pl.mm.sportmetrics.repository.entity.*;
-import pl.mm.sportmetrics.repository.entity.EventDTO;
 import pl.mm.sportmetrics.repository.mapper.EventDTOFactory;
 
 import java.util.List;
@@ -108,7 +107,6 @@ public class Repository {
     }
 
     public void saveEvent(Event event){
-        //TODO: Czy tu moze byc new, czy jednak na sile trzeba to tez springowi wciskac
         EventDTO mappedEvent = new EventDTOFactory().getEvent(event);
         saveCompetition(mappedEvent.competition);
         saveSegments(mappedEvent.segments);

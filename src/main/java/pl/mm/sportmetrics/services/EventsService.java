@@ -3,7 +3,7 @@ package pl.mm.sportmetrics.services;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import pl.mm.sportmetrics.model.viewlayer.EventsPageDTO;
+import pl.mm.sportmetrics.dto.viewlayer.EventsPageDTO;
 import pl.mm.sportmetrics.repository.Repository;
 
 @Service

@@ -1,16 +1,16 @@
 package pl.mm.sportmetrics.repository.mapper;
 
-import pl.mm.sportmetrics.model.inputlayer.Event;
-import pl.mm.sportmetrics.model.inputlayer.SingleResultSet;
+import pl.mm.sportmetrics.dto.inputlayer.Event;
+import pl.mm.sportmetrics.dto.inputlayer.SingleResultSet;
 import pl.mm.sportmetrics.repository.entity.*;
 
 import java.sql.Time;
-// TODO: czy to ma byc factory, moze to raczej jest mapper?
+// TODO:x czy to ma byc factory, moze to raczej jest mapper? bardziej mappper, ale to nie jest istotne filozoficzne pytnie
 public class EventDTOFactory {
 
     public EventDTO getEvent(Event event){
-        EventDTO createdEvent = new EventDTO();     //TODO: czy tu moze byc new?
-// TODO: rozbic na kilka metod, po co wszystko w jednej:
+        EventDTO createdEvent = new EventDTO();
+// TODO:x rozbic na kilka metod, po co wszystko w jednej:
         createdEvent.competition.name = event.name;
 
         for (int i = 0; i < event.segments.size(); i++) {
@@ -52,12 +52,11 @@ public class EventDTOFactory {
         return createdEvent;
     }
 
-    // TODO: to wygląda dość mocno hackowato, może się nie dać inaczej ale pomyśl coś w deseń https://stackoverflow.com/questions/6403851/parsing-time-strings-like-1h-30min
+    // TODO:x koniecznie przetetsowac
     private Time parseTime(String time) {
 
         time = time.replace(".", ":")
-                .replace("+", "")
-        ;
+                .replace("+", "");
 
         if (time.contains("-")) {
             time = "00:00:00";

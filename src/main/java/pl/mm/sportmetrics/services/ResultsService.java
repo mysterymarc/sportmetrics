@@ -1,12 +1,12 @@
 package pl.mm.sportmetrics.services;
 
 import org.springframework.stereotype.Service;
-import pl.mm.sportmetrics.model.viewlayer.ResultsMatrixFromBusinessToViewMapper;
-import pl.mm.sportmetrics.model.businesslayer.Competition;
-import pl.mm.sportmetrics.model.businesslayer.ResultsForRunnersGroup;
-import pl.mm.sportmetrics.model.businesslayer.Segments;
-import pl.mm.sportmetrics.model.viewlayer.ResultsPageDTO;
-import pl.mm.sportmetrics.model.viewlayer.RowResultsGroupView;
+import pl.mm.sportmetrics.domain.model.Competition;
+import pl.mm.sportmetrics.domain.model.ResultsForRunnersGroup;
+import pl.mm.sportmetrics.domain.model.Segments;
+import pl.mm.sportmetrics.dto.viewlayer.ResultsMatrixFromBusinessToViewMapper;
+import pl.mm.sportmetrics.dto.viewlayer.ResultsPageDTO;
+import pl.mm.sportmetrics.dto.viewlayer.RowResultsGroupView;
 import pl.mm.sportmetrics.repository.Repository;
 
 

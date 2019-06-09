@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
-import pl.mm.sportmetrics.model.businesslayer.IdentifiersOfResultsGroupsCollection;
+import pl.mm.sportmetrics.domain.model.IdentifiersOfResultsGroupsCollection;
 import pl.mm.sportmetrics.services.AnalysisService;
 import pl.mm.sportmetrics.services.EventsService;
 import pl.mm.sportmetrics.services.ImportService;
@@ -46,17 +46,9 @@ public class ApplicationController {
 
     @PostMapping(value = "/uploadEventResults")
     public String importEvent(@RequestParam("file") MultipartFile jsonFile, Model model) {
-        try {
-            if (importService.importExternalData(jsonFile)) {
-                model.addAttribute("uploadResult", "success");
-            } else {
-                model.addAttribute("uploadResult", "failure");
-            }
-        } catch (IllegalArgumentException e) {
-            logger.error(e.getMessage());
-            model.addAttribute("uploadResult", "failure");
-        }
-        return "addEvent";
+       boolean success = importService.importExternalData(jsonFile);
+       model.addAttribute("uploadResult", success ? "success" : "failure");
+       return "addEvent";
     }
 
     @GetMapping(value = "/addEvent")

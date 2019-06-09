@@ -1,11 +1,10 @@
 package pl.mm.sportmetrics.services;
 
 import org.springframework.stereotype.Service;
-import pl.mm.sportmetrics.logic.Average;
-import pl.mm.sportmetrics.logic.Calculation;
-import pl.mm.sportmetrics.logic.Median;
-import pl.mm.sportmetrics.model.businesslayer.*;
-import pl.mm.sportmetrics.model.viewlayer.*;
+import pl.mm.sportmetrics.domain.logic.Average;
+import pl.mm.sportmetrics.domain.logic.Calculation;
+import pl.mm.sportmetrics.domain.model.*;
+import pl.mm.sportmetrics.dto.viewlayer.*;
 import pl.mm.sportmetrics.repository.Repository;
 
 import java.util.ArrayList;
