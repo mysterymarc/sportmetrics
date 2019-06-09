@@ -5,9 +5,7 @@ import pl.mm.sportmetrics.domain.model.Result;
 import pl.mm.sportmetrics.domain.model.ResultsForRunner;
 import pl.mm.sportmetrics.domain.model.ResultsForRunnersGroup;
 
-import java.sql.Time;
 import java.util.Arrays;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -47,46 +45,30 @@ public class ResultsMatrixFromBusinessToViewMapperTest {
 
     private ResultsForRunnersGroup givenResultsForRunnersGroup() {
         ResultsForRunnersGroup group = new ResultsForRunnersGroup();
-        group.add(givenResultForRunner(
+        group.add(new ResultsForRunner(
+                2,
                 "Janusz Nosacz",
                 "Wrocław",
-                2,
-                25L,
-                34L,
                 "00:01:20",
                 "00:00:40",
                 Arrays.asList(new Result("00:00:20", 1), new Result("00:01:00", 2)),
-                Arrays.asList(new Result("00:00:20", 2), new Result("00:01:20", 2))));
+                Arrays.asList(new Result("00:00:20", 2), new Result("00:01:20", 2)),
+                25L,
+                34L
+        ));
 
-        group.add(givenResultForRunner(
+        group.add(new ResultsForRunner(
+                -1,
                 "Grażyna Sundajska",
                 "Mongolia",
-                -1,
-                28L,
-                36L,
                 "00:00:00",
                 "00:00:00",
                 Arrays.asList(new Result("00:00:40", 3), new Result("00:00:00", -1)),
-                Arrays.asList(new Result("00:00:40", 3), new Result("00:00:00", -1))
+                Arrays.asList(new Result("00:00:40", 3), new Result("00:00:00", -1)),
+                28L,
+                36L
         ));
 
         return group;
     }
-
-    private ResultsForRunner givenResultForRunner(String name, String city, int position, long competitorId, long totalResultId,
-                                                  String totalTime, String delayTime, List<Result> segmentsResults, List<Result> cumulativeResults) {
-        ResultsForRunner runner = new ResultsForRunner();
-        runner.setCompetitorId(competitorId);
-        runner.setCompetitorName(name);
-        runner.setCompetitorCity(city);
-        runner.setPosition(position);
-        runner.setTotalResultId(totalResultId);
-        runner.setTotalTime(Time.valueOf(totalTime));
-        runner.setDelayTime(Time.valueOf(delayTime));
-        runner.addAllSegmentResults(segmentsResults);
-        runner.addAllCumulativeResults(cumulativeResults);
-        return runner;
-    }
-
-
 }

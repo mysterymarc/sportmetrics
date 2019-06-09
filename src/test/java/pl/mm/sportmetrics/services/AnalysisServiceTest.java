@@ -5,11 +5,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import pl.mm.sportmetrics.domain.model.IdentifiersOfResultsGroup;
-import pl.mm.sportmetrics.domain.model.IdentifiersOfResultsGroupsCollection;
-import pl.mm.sportmetrics.domain.model.ResultsForRunnersGroup;
+import pl.mm.sportmetrics.domain.model.*;
+import pl.mm.sportmetrics.dto.viewlayer.*;
 import pl.mm.sportmetrics.repository.Repository;
 
+import java.util.Arrays;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -26,26 +28,103 @@ public class AnalysisServiceTest {
     }
 
     @Test
-    public void getDataForView_returns_correct_data() {
+    public void givenCompetitionIdAndResultIdWhenCallToServiceToReturnDataForViewThenCorrectDataAreReturned() {
+        //given
         IdentifiersOfResultsGroupsCollection groups = givenCorrectGroupCollection();
-
-        givenRepositoryReturnsResultsForGroups(groups);
-
-
-        analysisService.getDataForView(1L, groups);
+        long competitionId = 1L;
+        String competitonName = "Example competition name";
+        String segmentName = "S-1";
+        givenRepositoryReturnsCompetition(competitionId, competitonName);
+        givenRepositoryReturnsSegments(competitionId, segmentName);
+        givenRepositoryReturnsResultsForRunnersGroups(groups);
+        //when
+        AnalysisPageDTO viewData = analysisService.getDataForView(competitionId, groups);
+        //then
+        assertThat(viewData).isEqualTo(new AnalysisPageDTO(
+                new Competition(competitionId, competitonName),
+                new Segments(Arrays.asList(segmentName)),
+                expectedRowResultsGroupsCollectionView(),
+                expectedAnalysisResultsGroupsCollectionView()
+        ));
     }
 
     private IdentifiersOfResultsGroupsCollection givenCorrectGroupCollection() {
-        IdentifiersOfResultsGroup groupId = new IdentifiersOfResultsGroup();
-        groupId.add(3L);
-        IdentifiersOfResultsGroupsCollection ids = new IdentifiersOfResultsGroupsCollection();
-        ids.add(groupId);
-        return ids;
+        IdentifiersOfResultsGroup resultsIdsGroup = new IdentifiersOfResultsGroup();
+        resultsIdsGroup.add(3L);
+        IdentifiersOfResultsGroupsCollection groupsCollection = new IdentifiersOfResultsGroupsCollection();
+        groupsCollection.add(resultsIdsGroup);
+        groupsCollection.add(resultsIdsGroup);      //two groups need to be created (consist the same id in this case)
+        return groupsCollection;
     }
 
-    private void givenRepositoryReturnsResultsForGroups(IdentifiersOfResultsGroupsCollection groups) {
-        IdentifiersOfResultsGroup groupId = groups.iterator().next();
-        when(repository.findResultsByTotalResultIds(groupId)).thenReturn(new ResultsForRunnersGroup());
+    private void givenRepositoryReturnsResultsForRunnersGroups(IdentifiersOfResultsGroupsCollection groupIdsCollection) {
+        IdentifiersOfResultsGroup groupId = groupIdsCollection.iterator().next();
+        when(repository.findResultsByTotalResultIds(groupId)).thenReturn(givenResultsForRunnersGroup());
     }
 
+    private void givenRepositoryReturnsCompetition(Long competitionId, String competitionName) {
+        when(repository.getCompetition(competitionId)).thenReturn(new Competition(competitionId, competitionName));
+    }
+
+    private void givenRepositoryReturnsSegments(Long competitionId, String segmentName) {
+        when(repository.getSegments(competitionId)).thenReturn(new Segments(Arrays.asList(segmentName)));
+    }
+
+    private ResultsForRunnersGroup givenResultsForRunnersGroup() {
+        ResultsForRunnersGroup group = new ResultsForRunnersGroup();
+        group.add(new ResultsForRunner(
+                2,
+                "Janusz Nosacz",
+                "Wrocław",
+                "00:00:20",
+                "00:00:30",
+                Arrays.asList(new Result("00:00:20", 1)),
+                Arrays.asList(new Result("00:00:40", 2)),
+                25L,
+                3L
+        ));
+
+        return group;
+    }
+
+    private RowResultView expectedRowResultView() {
+        return new RowResultView(
+                25L,
+                3L,
+                "Janusz Nosacz",
+                "Wrocław",
+                "2",
+                "00:20",
+                "+00:30",
+                Arrays.asList(new SingleResultView("00:20", "1")),
+                Arrays.asList(new SingleResultView("00:40", "2"))
+        );
+    }
+
+    private RowResultsGroupsColletionView expectedRowResultsGroupsCollectionView() {
+        return new RowResultsGroupsColletionView(
+                Arrays.asList(new RowResultsGroupView(
+                                Arrays.asList(expectedRowResultView())),
+                        new RowResultsGroupView( //because two groups were created
+                                Arrays.asList(expectedRowResultView()))
+                )
+        );
+    }
+
+    private AnalysisResultRow expectedAnalysisResultRow(){
+        return new AnalysisResultRow(
+                "Average Time",
+                Arrays.asList(new AnalysisResultForSegment("00:20", "draw"))
+        );
+    }
+
+    private AnalysisResultsGroupsCollectionView expectedAnalysisResultsGroupsCollectionView(){
+        return new AnalysisResultsGroupsCollectionView(
+                Arrays.asList(new AnalysisResultsGroupView(
+                                Arrays.asList(expectedAnalysisResultRow())),
+                        new AnalysisResultsGroupView( //because two groups were created
+                                Arrays.asList(expectedAnalysisResultRow())
+                        ))
+        );
+    }
 }

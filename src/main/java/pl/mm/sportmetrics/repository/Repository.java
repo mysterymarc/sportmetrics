@@ -100,10 +100,7 @@ public class Repository {
     }
 //TODO: wylaczyc to do oddzielnych maperow
     private Competition mapToModel(CompetitionEntity entity){
-        Competition competitionModel = new Competition();
-        competitionModel.id = entity.id;
-        competitionModel.name = entity.name;
-        return competitionModel;
+        return new Competition(entity.id,entity.name);
     }
 
     public void saveEvent(Event event){

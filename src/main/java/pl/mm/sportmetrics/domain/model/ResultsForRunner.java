@@ -16,6 +16,34 @@ public class ResultsForRunner {
     private Long competitorId;
     private Long totalResultId;
 
+    public ResultsForRunner(){
+
+    }
+
+    public ResultsForRunner(int position, String competitorName, String competitorCity, Time totalTime, Time delayTime, List<Result> segmentResults, List<Result> cumulativeResults, Long competitorId, Long totalResultId) {
+        this.position = position;
+        this.competitorName = competitorName;
+        this.competitorCity = competitorCity;
+        this.totalTime = totalTime;
+        this.delayTime = delayTime;
+        this.segmentResults = segmentResults;
+        this.cumulativeResults = cumulativeResults;
+        this.competitorId = competitorId;
+        this.totalResultId = totalResultId;
+    }
+
+    public ResultsForRunner(int position, String competitorName, String competitorCity, String totalTime, String delayTime, List<Result> segmentResults, List<Result> cumulativeResults, Long competitorId, Long totalResultId) {
+        this.position = position;
+        this.competitorName = competitorName;
+        this.competitorCity = competitorCity;
+        this.totalTime = Time.valueOf(totalTime);
+        this.delayTime = Time.valueOf(delayTime);
+        this.segmentResults = segmentResults;
+        this.cumulativeResults = cumulativeResults;
+        this.competitorId = competitorId;
+        this.totalResultId = totalResultId;
+    }
+
     public int getPosition() {
         return position;
     }

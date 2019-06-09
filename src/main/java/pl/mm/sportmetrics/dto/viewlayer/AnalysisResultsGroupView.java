@@ -8,6 +8,13 @@ public class AnalysisResultsGroupView {
 
     List<AnalysisResultRow> analyses = new ArrayList<AnalysisResultRow>();
 
+    public AnalysisResultsGroupView() {
+    }
+
+    public AnalysisResultsGroupView(List<AnalysisResultRow> analyses) {
+        this.analyses = analyses;
+    }
+
     public List<AnalysisResultRow> getAnalyses() {
         return analyses;
     }
