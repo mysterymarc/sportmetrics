@@ -37,7 +37,7 @@ public class ApplicationControllerTest {
     private ImportService importService;
 
     @Test
-    public void addEvent_should_show_form() throws Exception {
+    public void givenApplicationContextActiveWhenCallAddEventThenAddEventSiteNameReturned() throws Exception {
         this.mockMvc
                 .perform(get("/addEvent"))
                 .andDo(print())

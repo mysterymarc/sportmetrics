@@ -40,16 +40,16 @@ public class AnalysisServiceTest {
         //given
         IdentifiersOfResultsGroupsCollection groups = givenCorrectGroupCollection();
         long competitionId = 1L;
-        String competitonName = "Example competition name";
+        String competitionName = "Example competition name";
         String segmentName = "S-1";
-        givenRepositoryReturnsCompetition(competitionId, competitonName);
+        givenRepositoryReturnsCompetition(competitionId, competitionName);
         givenRepositoryReturnsSegments(competitionId, segmentName);
         givenRepositoryReturnsResultsForRunnersGroups(groups);
         //when
         AnalysisPageDTO viewData = analysisService.getDataForView(competitionId, groups);
         //then
         assertThat(viewData).isEqualTo(new AnalysisPageDTO(
-                new Competition(competitionId, competitonName),
+                new Competition(competitionId, competitionName),
                 new Segments(Arrays.asList(segmentName)),
                 expectedRowResultsGroupsCollectionView(),
                 expectedAnalysisResultsGroupsCollectionView()
