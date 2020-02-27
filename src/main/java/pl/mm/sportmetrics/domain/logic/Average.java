@@ -13,12 +13,11 @@ public class Average implements Calculation{
     }
 
     @Override
-    public String getStatisticName(){
+    public String getName(){
         return "Average Time";
     }
 
     private List<Long> sumUpTimesForEachColumnSeparately(TimeMatrix matrix){
-
         List<Long> sum = new ArrayList<>();
 
         for(TimeList column : matrix.getColumns())
@@ -34,7 +33,6 @@ public class Average implements Calculation{
             }
             sum.add(columnSum);
         }
-
         return sum;
     }
 
@@ -49,5 +47,4 @@ public class Average implements Calculation{
         }
         return avg;
     }
-
 }

@@ -22,7 +22,7 @@ public class SegmentsStatisticsForGroupFactory {
 
         for(Calculation calculation : calculationStrategies){
             TimeList result = calculation.getStatistic(mapBusinessObjectToTimeMatrix(resultsForRunnersGroup));
-            statisticsForGroup.add(mapTimeListToBusinessObject(result,calculation.getStatisticName()));
+            statisticsForGroup.add(mapTimeListToBusinessObject(result,calculation.getName()));
         }
 
         return statisticsForGroup;

@@ -3,6 +3,7 @@ package pl.mm.sportmetrics.domain.model;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class SegmentsStatistic {
     private String title;
@@ -55,4 +56,25 @@ public class SegmentsStatistic {
         }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SegmentsStatistic that = (SegmentsStatistic) o;
+        return Objects.equals(title, that.title) &&
+                Objects.equals(segmentSingleStatistics, that.segmentSingleStatistics);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, segmentSingleStatistics);
+    }
+
+    @Override
+    public String toString() {
+        return "SegmentsStatistic{" +
+                "title='" + title + '\'' +
+                ", segmentSingleStatistics=" + segmentSingleStatistics +
+                '}';
+    }
 }

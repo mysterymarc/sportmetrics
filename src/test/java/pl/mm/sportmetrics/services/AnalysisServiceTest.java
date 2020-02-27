@@ -80,18 +80,17 @@ public class AnalysisServiceTest {
 
     private ResultsForRunnersGroup givenResultsForRunnersGroup() {
         ResultsForRunnersGroup group = new ResultsForRunnersGroup();
-        group.add(new ResultsForRunner(
-                2,
-                "Janusz Nosacz",
-                "Wrocław",
-                "00:00:20",
-                "00:00:30",
-                Arrays.asList(new Result("00:00:20", 1)),
-                Arrays.asList(new Result("00:00:40", 2)),
-                25L,
-                3L
-        ));
-
+        group.add(new ResultsForRunner.Builder()
+            .withName("Janusz Nosacz")
+            .fromCity("Wrocław")
+                .achievedPosition(2)
+                .reachedTotalTime("00:00:20")
+                .withDelayToWinner("00:00:30")
+                .withSegmentResults(Arrays.asList(new Result("00:00:20", 1)))
+                .withCumulativeResults(Arrays.asList(new Result("00:00:40", 2)))
+                .competitorSignedById(25L)
+                .totalResultSignedById(3L)
+                .build());
         return group;
     }
 
@@ -119,20 +118,27 @@ public class AnalysisServiceTest {
         );
     }
 
-    private AnalysisResultRow expectedAnalysisResultRow(){
+    private AnalysisResultsGroupsCollectionView expectedAnalysisResultsGroupsCollectionView(){
+        return new AnalysisResultsGroupsCollectionView(
+                Arrays.asList(new AnalysisResultsGroupView(
+                                Arrays.asList(expectedAverageAnalysisResultRow(), expectedMedianAnalysisResultRow())),
+                        new AnalysisResultsGroupView( //because two groups were created
+                                Arrays.asList(expectedAverageAnalysisResultRow(), expectedMedianAnalysisResultRow())
+                        ))
+        );
+    }
+
+    private AnalysisResultRow expectedAverageAnalysisResultRow(){
         return new AnalysisResultRow(
                 "Average Time",
                 Arrays.asList(new AnalysisResultForSegment("00:20", "draw"))
         );
     }
 
-    private AnalysisResultsGroupsCollectionView expectedAnalysisResultsGroupsCollectionView(){
-        return new AnalysisResultsGroupsCollectionView(
-                Arrays.asList(new AnalysisResultsGroupView(
-                                Arrays.asList(expectedAnalysisResultRow())),
-                        new AnalysisResultsGroupView( //because two groups were created
-                                Arrays.asList(expectedAnalysisResultRow())
-                        ))
+    private AnalysisResultRow expectedMedianAnalysisResultRow(){
+        return new AnalysisResultRow(
+                "Median Time",
+                Arrays.asList(new AnalysisResultForSegment("00:20", "draw"))
         );
     }
 }

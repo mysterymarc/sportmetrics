@@ -62,17 +62,17 @@ public class RunnersResultRepository {
     }
 
     private ResultsForRunner mapEntityToBusinessModel(TotalResultEntity totalResult){
-        return new ResultsForRunner(
-                totalResult.position,
-                totalResult.competitor.name,
-                totalResult.competitor.city,
-                totalResult.totalTime,
-                totalResult.delayTime,
-                findSegmentResultsByTotalResultId(totalResult.id),
-                findCumulativeResultsByTotalResultId(totalResult.id),
-                totalResult.competitor.id,
-                totalResult.id
-        );
+        return new ResultsForRunner.Builder()
+                .withName(totalResult.competitor.name)
+                .fromCity(totalResult.competitor.city)
+                .achievedPosition(totalResult.position)
+                .reachedTotalTime(totalResult.totalTime)
+                .withDelayToWinner(totalResult.delayTime)
+                .withSegmentResults(findSegmentResultsByTotalResultId(totalResult.id))
+                .withCumulativeResults(findCumulativeResultsByTotalResultId(totalResult.id))
+                .competitorSignedById(totalResult.competitor.id)
+                .totalResultSignedById(totalResult.id)
+                .build();
     }
 
     private List<Result> findSegmentResultsByTotalResultId(Long totalResultId){

@@ -11,128 +11,126 @@ public class ResultsForRunner {
     private String competitorCity;
     private Time totalTime;
     private Time delayTime;
-    private List<Result> segmentResults = new ArrayList<>();
-    private List<Result> cumulativeResults = new ArrayList<>();
+    private List<Result> segmentResults;
+    private List<Result> cumulativeResults;
     private Long competitorId;
     private Long totalResultId;
 
-    public ResultsForRunner(){
-
-    }
-
-    public ResultsForRunner(int position, String competitorName, String competitorCity, Time totalTime, Time delayTime, List<Result> segmentResults, List<Result> cumulativeResults, Long competitorId, Long totalResultId) {
-        this.position = position;
-        this.competitorName = competitorName;
-        this.competitorCity = competitorCity;
-        this.totalTime = totalTime;
-        this.delayTime = delayTime;
-        this.segmentResults = segmentResults;
-        this.cumulativeResults = cumulativeResults;
-        this.competitorId = competitorId;
-        this.totalResultId = totalResultId;
-    }
-
-    public ResultsForRunner(int position, String competitorName, String competitorCity, String totalTime, String delayTime, List<Result> segmentResults, List<Result> cumulativeResults, Long competitorId, Long totalResultId) {
-        this.position = position;
-        this.competitorName = competitorName;
-        this.competitorCity = competitorCity;
-        this.totalTime = Time.valueOf(totalTime);
-        this.delayTime = Time.valueOf(delayTime);
-        this.segmentResults = segmentResults;
-        this.cumulativeResults = cumulativeResults;
-        this.competitorId = competitorId;
-        this.totalResultId = totalResultId;
+    private ResultsForRunner(Builder builder) {
+        position = builder.position;
+        competitorName = builder.competitorName;
+        competitorCity = builder.competitorCity;
+        totalTime = builder.totalTime;
+        delayTime = builder.delayTime;
+        segmentResults = builder.segmentResults;
+        cumulativeResults = builder.cumulativeResults;
+        competitorId = builder.competitorId;
+        totalResultId = builder.totalResultId;
     }
 
     public int getPosition() {
         return position;
     }
 
-    public void setPosition(int position) {
-        this.position = position;
-    }
-
     public String getCompetitorName() {
         return competitorName;
-    }
-
-    public void setCompetitorName(String competitorName) {
-        this.competitorName = competitorName;
     }
 
     public String getCompetitorCity() {
         return competitorCity;
     }
 
-    public void setCompetitorCity(String competitorCity) {
-        this.competitorCity = competitorCity;
-    }
-
     public Time getTotalTime() {
         return totalTime;
-    }
-
-    public void setTotalTime(Time totalTime) {
-        this.totalTime = totalTime;
     }
 
     public Time getDelayTime() {
         return delayTime;
     }
 
-    public void setDelayTime(Time delayTime) {
-        this.delayTime = delayTime;
-    }
-
     public List<Result> getSegmentResults() {
         return segmentResults;
-    }
-
-    public void setSegmentResults(List<Result> segmentResults) {
-        this.segmentResults = segmentResults;
     }
 
     public List<Result> getCumulativeResults() {
         return cumulativeResults;
     }
 
-    public void setCumulativeResults(List<Result> cumulativeResults) {
-        this.cumulativeResults = cumulativeResults;
-    }
-
     public Long getCompetitorId() {
         return competitorId;
-    }
-
-    public void setCompetitorId(Long competitorId) {
-        this.competitorId = competitorId;
     }
 
     public Long getTotalResultId() {
         return totalResultId;
     }
 
-    public void setTotalResultId(Long totalResultId) {
-        this.totalResultId = totalResultId;
+    public static class Builder {
+
+        private int position;
+        private String competitorName;
+        private String competitorCity;
+        private Time totalTime;
+        private Time delayTime;
+        private List<Result> segmentResults = new ArrayList<>();
+        private List<Result> cumulativeResults = new ArrayList<>();
+        private Long competitorId;
+        private Long totalResultId;
+
+        public Builder withName(String competitorName) {
+            this.competitorName = competitorName;
+            return this;
+        }
+
+        public Builder fromCity(String competitorCity) {
+            this.competitorCity = competitorCity;
+            return this;
+        }
+
+        public Builder achievedPosition(int position) {
+            this.position = position;
+            return this;
+        }
+
+        public Builder reachedTotalTime(Time totalTime) {
+            this.totalTime = totalTime;
+            return this;
+        }
+
+        public Builder reachedTotalTime(String totalTime) {
+            return reachedTotalTime(Time.valueOf(totalTime));
+        }
+
+        public Builder withDelayToWinner(Time delayTime) {
+            this.delayTime = delayTime;
+            return this;
+        }
+
+        public Builder withDelayToWinner(String delayTime) {
+            return withDelayToWinner(Time.valueOf(delayTime));
+        }
+
+        public Builder withSegmentResults(List<Result> segmentResults) {
+            this.segmentResults = segmentResults;
+            return this;
+        }
+
+        public Builder withCumulativeResults(List<Result> cumulativeResults) {
+            this.cumulativeResults = cumulativeResults;
+            return this;
+        }
+
+        public Builder competitorSignedById(Long id) {
+            this.competitorId = id;
+            return this;
+        }
+
+        public Builder totalResultSignedById(Long id) {
+            this.totalResultId = id;
+            return this;
+        }
+
+        public ResultsForRunner build() {
+            return new ResultsForRunner(this);
+        }
     }
-
-    public void addSegmentResult(Result result){
-        segmentResults.add(result);
-    }
-
-    public void addAllSegmentResults(List<Result> results){
-        segmentResults.addAll(results);
-    }
-
-    public void addCumulativeResult(Result result){
-        cumulativeResults.add(result);
-    }
-
-    public void addAllCumulativeResults(List<Result> results){
-        cumulativeResults.addAll(results);
-    }
-
-
-
-
 }

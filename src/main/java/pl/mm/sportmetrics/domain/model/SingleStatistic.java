@@ -1,6 +1,7 @@
 package pl.mm.sportmetrics.domain.model;
 
 import java.sql.Time;
+import java.util.Objects;
 
 public class SingleStatistic {
     private Time value;
@@ -47,4 +48,25 @@ public class SingleStatistic {
         }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SingleStatistic that = (SingleStatistic) o;
+        return Objects.equals(value, that.value) &&
+                description == that.description;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value, description);
+    }
+
+    @Override
+    public String toString() {
+        return "SingleStatistic{" +
+                "value=" + value +
+                ", description=" + description +
+                '}';
+    }
 }
