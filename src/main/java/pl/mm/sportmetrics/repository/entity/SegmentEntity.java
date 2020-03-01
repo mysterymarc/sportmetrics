@@ -7,15 +7,17 @@ import javax.persistence.*;
 public class SegmentEntity {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Long id;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "competition_id", referencedColumnName = "id")
     public CompetitionEntity competition;
 
-    @Column(name="order_number")
+    @Column(name = "order_number")
     public int orderNumber;
+
+    public String name;
 
     public Long getId() {
         return id;
@@ -32,7 +34,5 @@ public class SegmentEntity {
     public String getName() {
         return name;
     }
-
-    public String name;
 }
 

@@ -3,6 +3,7 @@ package pl.mm.sportmetrics.domain.model;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ResultsForRunner {
 
@@ -132,5 +133,41 @@ public class ResultsForRunner {
         public ResultsForRunner build() {
             return new ResultsForRunner(this);
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ResultsForRunner that = (ResultsForRunner) o;
+        return position == that.position &&
+                Objects.equals(competitorName, that.competitorName) &&
+                Objects.equals(competitorCity, that.competitorCity) &&
+                Objects.equals(totalTime, that.totalTime) &&
+                Objects.equals(delayTime, that.delayTime) &&
+                Objects.equals(segmentResults, that.segmentResults) &&
+                Objects.equals(cumulativeResults, that.cumulativeResults) &&
+                Objects.equals(competitorId, that.competitorId) &&
+                Objects.equals(totalResultId, that.totalResultId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(position, competitorName, competitorCity, totalTime, delayTime, segmentResults, cumulativeResults, competitorId, totalResultId);
+    }
+
+    @Override
+    public String toString() {
+        return "ResultsForRunner{" +
+                "position=" + position +
+                ", competitorName='" + competitorName + '\'' +
+                ", competitorCity='" + competitorCity + '\'' +
+                ", totalTime=" + totalTime +
+                ", delayTime=" + delayTime +
+                ", segmentResults=" + segmentResults +
+                ", cumulativeResults=" + cumulativeResults +
+                ", competitorId=" + competitorId +
+                ", totalResultId=" + totalResultId +
+                '}';
     }
 }
