@@ -1,5 +1,5 @@
 {
-  "name": "Puchar Ślęży XXXI, WKS Śląsk [26/05/2019], M35",
+  "name": "Puchar XXXI [26/05/2019], M35",
   "segments": [
     "S-1",
     "1-2",
@@ -120,7 +120,7 @@
           "position": 6
         }
       ],
-      "city": "indywidualnie",
+      "city": "Wrocław",
       "cumulativeResults": [
         {
           "time": "1.09",
@@ -494,7 +494,7 @@
           "position": 3
         }
       ],
-      "city": "10 BKPANC",
+      "city": "Wrocław",
       "cumulativeResults": [
         {
           "time": "1.38",
@@ -585,7 +585,7 @@
           "position": 3
         },
         {
-          "time": "10 BKPANC",
+          "time": "",
           "position": -1
         }
       ]
@@ -685,7 +685,7 @@
           "position": 4
         }
       ],
-      "city": "Ambitracingteam",
+      "city": "Wrocław",
       "cumulativeResults": [
         {
           "time": "2.42",
@@ -872,7 +872,7 @@
           "position": 1
         }
       ],
-      "city": "10 BKPANC",
+      "city": "Wroclaw",
       "cumulativeResults": [
         {
           "time": "1.29",
@@ -963,7 +963,7 @@
           "position": 5
         },
         {
-          "time": "10 BKPANC",
+          "time": "",
           "position": -1
         }
       ]
@@ -1250,7 +1250,7 @@
           "position": 8
         }
       ],
-      "city": "Puławy i Skierniewice",
+      "city": "Skierniewice",
       "cumulativeResults": [
         {
           "time": "3.43",
@@ -1437,7 +1437,7 @@
           "position": 5
         }
       ],
-      "city": "indywidualnie",
+      "city": "Wrocław",
       "cumulativeResults": [
         {
           "time": "6.56",
@@ -1624,7 +1624,7 @@
           "position": -1
         },
         {
-          "time": "Łukasz Grzyb",
+          "time": "",
           "position": -1
         }
       ],
