@@ -1,6 +1,7 @@
 package pl.mm.sportmetrics.repository.entity;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "segment")
@@ -33,6 +34,22 @@ public class SegmentEntity {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SegmentEntity that = (SegmentEntity) o;
+        return orderNumber == that.orderNumber &&
+                Objects.equals(id, that.id) &&
+                Objects.equals(competition, that.competition) &&
+                Objects.equals(name, that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, competition, orderNumber, name);
     }
 }
 

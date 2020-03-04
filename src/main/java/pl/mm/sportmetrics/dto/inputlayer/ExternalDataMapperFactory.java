@@ -1,5 +1,8 @@
 package pl.mm.sportmetrics.dto.inputlayer;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class ExternalDataMapperFactory {
 
     public ExternalDataMapper getMapper(InputFileType type){

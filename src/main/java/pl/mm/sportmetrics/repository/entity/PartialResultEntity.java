@@ -2,6 +2,7 @@ package pl.mm.sportmetrics.repository.entity;
 
 import javax.persistence.*;
 import java.sql.Time;
+import java.util.Objects;
 
 @Entity
 @Table(name = "partial_result")
@@ -58,5 +59,24 @@ public class PartialResultEntity {
 
     public Time getCumulativeTime() {
         return cumulativeTime;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PartialResultEntity that = (PartialResultEntity) o;
+        return segmentPosition == that.segmentPosition &&
+                cumulativePosition == that.cumulativePosition &&
+                Objects.equals(id, that.id) &&
+                Objects.equals(totalResult, that.totalResult) &&
+                Objects.equals(segment, that.segment) &&
+                Objects.equals(segmentTime, that.segmentTime) &&
+                Objects.equals(cumulativeTime, that.cumulativeTime);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, totalResult, segment, segmentPosition, segmentTime, cumulativePosition, cumulativeTime);
     }
 }

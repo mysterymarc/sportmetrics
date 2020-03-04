@@ -20,27 +20,30 @@ public class ImportService {
     private final RunnersResultRepository runnersResultRepository;
     private final CompetitionRepository competitionRepository;
     private final SegmentRepository segmentRepository;
+    private final ExternalDataMapperFactory externalDataMapperFactory;
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public ImportService(RunnersResultRepository runnersResultRepository, CompetitionRepository competitionRepository, SegmentRepository segmentRepository) {
+    public ImportService(RunnersResultRepository runnersResultRepository, CompetitionRepository competitionRepository,
+                         SegmentRepository segmentRepository, ExternalDataMapperFactory externalDataMapperFactory) {
         this.runnersResultRepository = runnersResultRepository;
         this.competitionRepository = competitionRepository;
         this.segmentRepository = segmentRepository;
+        this.externalDataMapperFactory = externalDataMapperFactory;
     }
 
-    public boolean importExternalData(MultipartFile jsonFile){
+    public boolean importExternalData(MultipartFile jsonFile) {
         try {
-            EventDTO receivedEventDTO = new ExternalDataMapperFactory().getMapper(InputFileType.JSON).readFile(jsonFile);
+            EventDTO receivedEventDTO = externalDataMapperFactory.getMapper(InputFileType.JSON).readFile(jsonFile);
             storeEvent(receivedEventDTO);
             return true;
-        } catch (UncheckedIOException e){
+        } catch (UncheckedIOException e) {
             logger.error("Data not uploaded to repository", e);
             return false;
         }
     }
 
-    private void storeEvent(EventDTO eventDTO){
+    private void storeEvent(EventDTO eventDTO) {
         EventEntitiesSet eventEntitiesSet = new EventEntitiesSet(eventDTO);
         competitionRepository.saveCompetition(eventEntitiesSet);
         segmentRepository.saveSegments(eventEntitiesSet);

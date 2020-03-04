@@ -6,6 +6,7 @@ import pl.mm.sportmetrics.dto.inputlayer.SingleResultSet;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class EventEntitiesSet {
 
@@ -89,4 +90,31 @@ public class EventEntitiesSet {
         }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        EventEntitiesSet that = (EventEntitiesSet) o;
+        return Objects.equals(competition, that.competition) &&
+                Objects.equals(competitors, that.competitors) &&
+                Objects.equals(segments, that.segments) &&
+                Objects.equals(totalResults, that.totalResults) &&
+                Objects.equals(partialResults, that.partialResults);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(competition, competitors, segments, totalResults, partialResults);
+    }
+
+    @Override
+    public String toString() {
+        return "EventEntitiesSet{" +
+                "competition=" + competition +
+                ", competitors=" + competitors +
+                ", segments=" + segments +
+                ", totalResults=" + totalResults +
+                ", partialResults=" + partialResults +
+                '}';
+    }
 }

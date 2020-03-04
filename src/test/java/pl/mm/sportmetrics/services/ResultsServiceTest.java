@@ -30,7 +30,7 @@ public class ResultsServiceTest {
     private SegmentRepository segmentRepository;
 
     @Test
-    public void getDataForView() {
+    public void givenCompetitionIdWhenRequestToResultsServiceThenDTOWithResultsReturned() {
         Long givenCompetitionId = 1L;
         givenCompetition(givenCompetitionId);
         givenSegments(givenCompetitionId);

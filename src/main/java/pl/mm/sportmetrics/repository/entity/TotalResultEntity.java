@@ -2,6 +2,7 @@ package pl.mm.sportmetrics.repository.entity;
 
 import javax.persistence.*;
 import java.sql.Time;
+import java.util.Objects;
 
 @Entity
 @Table(name = "total_result")
@@ -51,4 +52,21 @@ public class TotalResultEntity {
         return delayTime;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TotalResultEntity that = (TotalResultEntity) o;
+        return position == that.position &&
+                Objects.equals(id, that.id) &&
+                Objects.equals(competition, that.competition) &&
+                Objects.equals(competitor, that.competitor) &&
+                Objects.equals(totalTime, that.totalTime) &&
+                Objects.equals(delayTime, that.delayTime);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, competition, competitor, position, totalTime, delayTime);
+    }
 }
