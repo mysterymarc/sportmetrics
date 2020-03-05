@@ -3,6 +3,7 @@ package pl.mm.sportmetrics.domain.model;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 
 public class IdentifiersOfResultsGroupsCollection implements Iterable<IdentifiersOfResultsGroup> {
 
@@ -21,5 +22,18 @@ public class IdentifiersOfResultsGroupsCollection implements Iterable<Identifier
     @Override
     public Iterator<IdentifiersOfResultsGroup> iterator() {
         return identifiersGroups.iterator();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        IdentifiersOfResultsGroupsCollection that = (IdentifiersOfResultsGroupsCollection) o;
+        return Objects.equals(identifiersGroups, that.identifiersGroups);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(identifiersGroups);
     }
 }

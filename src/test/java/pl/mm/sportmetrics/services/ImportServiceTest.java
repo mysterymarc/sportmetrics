@@ -42,7 +42,7 @@ public class ImportServiceTest {
 
     @Test
     public void givenJsonFileWhenImportSucceededThenDataShouldBeStoredInRepository() {
-        MockMultipartFile givenJsonFile = new MockMultipartFile("example.json",new byte[1]);
+        MockMultipartFile givenJsonFile = new MockMultipartFile("example.json","".getBytes());
         givenMapperConvertingJsonFileToEventDTO();
 
         boolean importResult = new ImportService(runnersResultRepository,competitionRepository,segmentRepository, externalDataMapperFactory)
@@ -56,7 +56,7 @@ public class ImportServiceTest {
 
     @Test
     public void givenJsonFileWhenImportFailedThenException(){
-        MockMultipartFile givenJsonFile = new MockMultipartFile("example.json",new byte[1]);
+        MockMultipartFile givenJsonFile = new MockMultipartFile("example.json","".getBytes());
         givenMapperThrowingException();
 
         boolean importResult = new ImportService(runnersResultRepository,competitionRepository,segmentRepository, externalDataMapperFactory)

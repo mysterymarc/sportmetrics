@@ -89,5 +89,4 @@ public class ApplicationController {
         model.addAttribute("model", analysisService.getDataForView(competitionId, groupsCollection));
         return "analyse";
     }
-
 }
