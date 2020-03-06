@@ -4,14 +4,14 @@ Sportmetrics is a tool for tracking and analyse the results of participants in s
 
 ### Functionality
 
-##### Event list
+#### Event list
 
 Main page contains the list of all imported events. It is possible to choose one to look 
 at the detailed results or import a new one. 
 
 ![image](images/events.png) 
 
-##### Event results
+#### Event results
 
 After selecting the event, results for all competitors are shown. The results are sorted by the 
 place taken by the player. Total run time is presented as well as delay to the winner.
@@ -28,7 +28,7 @@ It allow to track runners pace on various sections of the route. Each segment re
 The application enables to select specific competitors for further analysis. It is possible to join any runner 
 into one of two separate groups depending on what needs to be studied.
 
-##### Analysis
+#### Analysis
 
 The competitors are divided into two groups. For example one group can contain examined runner and second can be 
 composed of competitors which was better than examined. It's useful to check which segments were significant that the
@@ -43,7 +43,7 @@ Green colour means result better than other group, pink means worse and grey is 
 
 ![image](images/analysis.png) 
 
-##### Event import
+#### Event import
 
 Importing a new event is possible under condition the input file has the expected format. 
 The file should be in json format:
