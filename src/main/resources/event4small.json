@@ -1,0 +1,1203 @@
+{
+"name" : "2019 E2 [12/12/2018], A",
+"segments" : [
+	"S-1",
+	"1-2",
+	"2-3",
+	"3-4",
+	"4-5",
+	"5-6",
+	"6-7",
+	"7-8",
+	"8-9",
+	"9-10",
+	"10-11",
+	"11-12",
+	"12-13",
+	"13-14",
+	"14-15",
+	"15-16",
+	"16-F"
+],
+"results" : [
+	{
+		"position" : 1,
+		"competitor" : "Rafał Anonim",
+		"total" : "20.24",
+		"delay" : "+0.00",
+		"segmentResults" : [
+			{
+				"time" : "1.03",
+				"position" : 2
+			},
+			{
+				"time" : "1.59",
+				"position" : 2
+			},
+			{
+				"time" : "0.50",
+				"position" : 1
+			},
+			{
+				"time" : "0.45",
+				"position" : 1
+			},
+			{
+				"time" : "0.24",
+				"position" : 1
+			},
+			{
+				"time" : "2.02",
+				"position" : 1
+			},
+			{
+				"time" : "0.21",
+				"position" : 2
+			},
+			{
+				"time" : "0.33",
+				"position" : 1
+			},
+			{
+				"time" : "1.26",
+				"position" : 1
+			},
+			{
+				"time" : "0.34",
+				"position" : 1
+			},
+			{
+				"time" : "0.42",
+				"position" : 1
+			},
+			{
+				"time" : "0.38",
+				"position" : 1
+			},
+			{
+				"time" : "0.27",
+				"position" : 2
+			},
+			{
+				"time" : "1.10",
+				"position" : 1
+			},
+			{
+				"time" : "0.33",
+				"position" : 1
+			},
+			{
+				"time" : "0.48",
+				"position" : 3
+			},
+			{
+				"time" : "0.41",
+				"position" : 1
+			}
+		],
+		"city" : "Łódź",
+		"cumulativeResults" : [
+			{
+				"time" : "1.03",
+				"position" : 2
+			},
+			{
+				"time" : "3.02",
+				"position" : 1
+			},
+			{
+				"time" : "3.52",
+				"position" : 1
+			},
+			{
+				"time" : "4.37",
+				"position" : 1
+			},
+			{
+				"time" : "5.01",
+				"position" : 1
+			},
+			{
+				"time" : "7.03",
+				"position" : 1
+			},
+			{
+				"time" : "7.24",
+				"position" : 1
+			},
+			{
+				"time" : "7.57",
+				"position" : 1
+			},
+			{
+				"time" : "9.23",
+				"position" : 1
+			},
+			{
+				"time" : "9.57",
+				"position" : 1
+			},
+			{
+				"time" : "10.39",
+				"position" : 1
+			},
+			{
+				"time" : "11.17",
+				"position" : 1
+			},
+			{
+				"time" : "11.44",
+				"position" : 1
+			},
+			{
+				"time" : "12.54",
+				"position" : 1
+			},
+			{
+				"time" : "13.27",
+				"position" : 1
+			},
+			{
+				"time" : "14.15",
+				"position" : 1
+			},
+			{
+				"time" : "14.56",
+				"position" : 1
+			},
+			{
+				"time" : "15.12",
+				"position" : 1
+			}
+		]
+	},
+	{
+		"position" : 2,
+		"competitor" : "Mikołaj Anonim",
+		"total" : "21.59",
+		"delay" : "+1.35",
+		"segmentResults" : [
+			{
+				"time" : "0.59",
+				"position" : 1
+			},
+			{
+				"time" : "2.07",
+				"position" : 5
+			},
+			{
+				"time" : "0.54",
+				"position" : 4
+			},
+			{
+				"time" : "0.47",
+				"position" : 2
+			},
+			{
+				"time" : "0.25",
+				"position" : 2
+			},
+			{
+				"time" : "2.12",
+				"position" : 3
+			},
+			{
+				"time" : "0.21",
+				"position" : 2
+			},
+			{
+				"time" : "0.35",
+				"position" : 2
+			},
+			{
+				"time" : "1.30",
+				"position" : 2
+			},
+			{
+				"time" : "0.41",
+				"position" : 4
+			},
+			{
+				"time" : "0.45",
+				"position" : 2
+			},
+			{
+				"time" : "0.45",
+				"position" : 4
+			},
+			{
+				"time" : "0.26",
+				"position" : 1
+			},
+			{
+				"time" : "1.14",
+				"position" : 3
+			},
+			{
+				"time" : "0.36",
+				"position" : 3
+			},
+			{
+				"time" : "0.49",
+				"position" : 4
+			},
+			{
+				"time" : "0.46",
+				"position" : 6
+			}
+		],
+		"city" : "Wrocław",
+		"cumulativeResults" : [
+			{
+				"time" : "0.59",
+				"position" : 1
+			},
+			{
+				"time" : "3.06",
+				"position" : 2
+			},
+			{
+				"time" : "4.00",
+				"position" : 3
+			},
+			{
+				"time" : "4.47",
+				"position" : 3
+			},
+			{
+				"time" : "5.12",
+				"position" : 3
+			},
+			{
+				"time" : "7.24",
+				"position" : 2
+			},
+			{
+				"time" : "7.45",
+				"position" : 2
+			},
+			{
+				"time" : "8.20",
+				"position" : 2
+			},
+			{
+				"time" : "9.50",
+				"position" : 2
+			},
+			{
+				"time" : "10.31",
+				"position" : 2
+			},
+			{
+				"time" : "11.16",
+				"position" : 2
+			},
+			{
+				"time" : "12.01",
+				"position" : 2
+			},
+			{
+				"time" : "12.27",
+				"position" : 2
+			},
+			{
+				"time" : "13.41",
+				"position" : 2
+			},
+			{
+				"time" : "14.17",
+				"position" : 2
+			},
+			{
+				"time" : "15.06",
+				"position" : 2
+			},
+			{
+				"time" : "15.52",
+				"position" : 2
+			}
+		]
+	},
+	{
+		"position" : 3,
+		"competitor" : "Wojciech Anonim",
+		"total" : "23.12",
+		"delay" : "+2.48",
+		"segmentResults" : [
+			{
+				"time" : "1.08",
+				"position" : 3
+			},
+			{
+				"time" : "1.58",
+				"position" : 1
+			},
+			{
+				"time" : "0.50",
+				"position" : 1
+			},
+			{
+				"time" : "0.49",
+				"position" : 3
+			},
+			{
+				"time" : "0.26",
+				"position" : 3
+			},
+			{
+				"time" : "2.27",
+				"position" : 11
+			},
+			{
+				"time" : "0.23",
+				"position" : 5
+			},
+			{
+				"time" : "0.37",
+				"position" : 4
+			},
+			{
+				"time" : "1.48",
+				"position" : 8
+			},
+			{
+				"time" : "0.41",
+				"position" : 4
+			},
+			{
+				"time" : "0.50",
+				"position" : 3
+			},
+			{
+				"time" : "0.44",
+				"position" : 3
+			},
+			{
+				"time" : "0.30",
+				"position" : 5
+			},
+			{
+				"time" : "1.20",
+				"position" : 12
+			},
+			{
+				"time" : "0.36",
+				"position" : 3
+			},
+			{
+				"time" : "1.00",
+				"position" : 21
+			},
+			{
+				"time" : "0.45",
+				"position" : 4
+			}
+		],
+		"city" : "Lublin",
+		"cumulativeResults" : [
+			{
+				"time" : "1.08",
+				"position" : 3
+			},
+			{
+				"time" : "3.06",
+				"position" : 2
+			},
+			{
+				"time" : "3.56",
+				"position" : 2
+			},
+			{
+				"time" : "4.45",
+				"position" : 2
+			},
+			{
+				"time" : "5.11",
+				"position" : 2
+			},
+			{
+				"time" : "7.38",
+				"position" : 3
+			},
+			{
+				"time" : "8.01",
+				"position" : 3
+			},
+			{
+				"time" : "8.38",
+				"position" : 3
+			},
+			{
+				"time" : "10.26",
+				"position" : 3
+			},
+			{
+				"time" : "11.07",
+				"position" : 3
+			},
+			{
+				"time" : "11.57",
+				"position" : 3
+			},
+			{
+				"time" : "12.41",
+				"position" : 3
+			},
+			{
+				"time" : "13.11",
+				"position" : 3
+			},
+			{
+				"time" : "14.31",
+				"position" : 3
+			},
+			{
+				"time" : "15.07",
+				"position" : 3
+			},
+			{
+				"time" : "16.07",
+				"position" : 3
+			},
+			{
+				"time" : "16.52",
+				"position" : 3
+			}
+		]
+	},
+	{
+		"position" : 4,
+		"competitor" : "Karol Anonim",
+		"total" : "23.21",
+		"delay" : "+2.57",
+		"segmentResults" : [
+			{
+				"time" : "1.14",
+				"position" : 7
+			},
+			{
+				"time" : "2.09",
+				"position" : 8
+			},
+			{
+				"time" : "0.53",
+				"position" : 3
+			},
+			{
+				"time" : "0.54",
+				"position" : 8
+			},
+			{
+				"time" : "0.26",
+				"position" : 3
+			},
+			{
+				"time" : "2.19",
+				"position" : 6
+			},
+			{
+				"time" : "0.28",
+				"position" : 22
+			},
+			{
+				"time" : "0.43",
+				"position" : 17
+			},
+			{
+				"time" : "1.37",
+				"position" : 3
+			},
+			{
+				"time" : "0.40",
+				"position" : 2
+			},
+			{
+				"time" : "0.55",
+				"position" : 8
+			},
+			{
+				"time" : "0.50",
+				"position" : 9
+			},
+			{
+				"time" : "0.30",
+				"position" : 5
+			},
+			{
+				"time" : "1.16",
+				"position" : 5
+			},
+			{
+				"time" : "0.35",
+				"position" : 2
+			},
+			{
+				"time" : "0.44",
+				"position" : 1
+			},
+			{
+				"time" : "0.46",
+				"position" : 6
+			}
+		],
+		"city" : "Wrocław",
+		"cumulativeResults" : [
+			{
+				"time" : "1.14",
+				"position" : 7
+			},
+			{
+				"time" : "3.23",
+				"position" : 7
+			},
+			{
+				"time" : "4.16",
+				"position" : 5
+			},
+			{
+				"time" : "5.10",
+				"position" : 6
+			},
+			{
+				"time" : "5.36",
+				"position" : 5
+			},
+			{
+				"time" : "7.55",
+				"position" : 5
+			},
+			{
+				"time" : "8.23",
+				"position" : 5
+			},
+			{
+				"time" : "9.06",
+				"position" : 5
+			},
+			{
+				"time" : "10.43",
+				"position" : 4
+			},
+			{
+				"time" : "11.23",
+				"position" : 4
+			},
+			{
+				"time" : "12.18",
+				"position" : 4
+			},
+			{
+				"time" : "13.08",
+				"position" : 4
+			},
+			{
+				"time" : "13.38",
+				"position" : 4
+			},
+			{
+				"time" : "14.54",
+				"position" : 4
+			},
+			{
+				"time" : "15.29",
+				"position" : 4
+			},
+			{
+				"time" : "16.13",
+				"position" : 4
+			},
+			{
+				"time" : "16.59",
+				"position" : 4
+			}
+		]
+	},
+	{
+		"position" : 5,
+		"competitor" : "Wojciech Anonim",
+		"total" : "23.24",
+		"delay" : "+3.00",
+		"segmentResults" : [
+			{
+				"time" : "1.10",
+				"position" : 4
+			},
+			{
+				"time" : "2.07",
+				"position" : 5
+			},
+			{
+				"time" : "1.00",
+				"position" : 10
+			},
+			{
+				"time" : "0.50",
+				"position" : 4
+			},
+			{
+				"time" : "0.32",
+				"position" : 10
+			},
+			{
+				"time" : "2.30",
+				"position" : 12
+			},
+			{
+				"time" : "0.23",
+				"position" : 5
+			},
+			{
+				"time" : "0.37",
+				"position" : 4
+			},
+			{
+				"time" : "1.52",
+				"position" : 11
+			},
+			{
+				"time" : "0.40",
+				"position" : 2
+			},
+			{
+				"time" : "0.50",
+				"position" : 3
+			},
+			{
+				"time" : "0.41",
+				"position" : 2
+			},
+			{
+				"time" : "0.31",
+				"position" : 7
+			},
+			{
+				"time" : "1.18",
+				"position" : 8
+			},
+			{
+				"time" : "0.38",
+				"position" : 8
+			},
+			{
+				"time" : "0.47",
+				"position" : 2
+			},
+			{
+				"time" : "0.43",
+				"position" : 3
+			}
+		],
+		"city" : "Wrocław",
+		"cumulativeResults" : [
+			{
+				"time" : "1.10",
+				"position" : 4
+			},
+			{
+				"time" : "3.17",
+				"position" : 5
+			},
+			{
+				"time" : "4.17",
+				"position" : 6
+			},
+			{
+				"time" : "5.07",
+				"position" : 5
+			},
+			{
+				"time" : "5.39",
+				"position" : 6
+			},
+			{
+				"time" : "8.09",
+				"position" : 6
+			},
+			{
+				"time" : "8.32",
+				"position" : 6
+			},
+			{
+				"time" : "9.09",
+				"position" : 6
+			},
+			{
+				"time" : "11.01",
+				"position" : 5
+			},
+			{
+				"time" : "11.41",
+				"position" : 5
+			},
+			{
+				"time" : "12.31",
+				"position" : 5
+			},
+			{
+				"time" : "13.12",
+				"position" : 5
+			},
+			{
+				"time" : "13.43",
+				"position" : 5
+			},
+			{
+				"time" : "15.01",
+				"position" : 5
+			},
+			{
+				"time" : "15.39",
+				"position" : 5
+			},
+			{
+				"time" : "16.26",
+				"position" : 5
+			},
+			{
+				"time" : "17.09",
+				"position" : 5
+			}
+		]
+	},
+	{
+		"position" : 6,
+		"competitor" : "Kamil Anonim",
+		"total" : "24.24",
+		"delay" : "+4.00",
+		"segmentResults" : [
+			{
+				"time" : "1.13",
+				"position" : 6
+			},
+			{
+				"time" : "2.06",
+				"position" : 4
+			},
+			{
+				"time" : "1.00",
+				"position" : 10
+			},
+			{
+				"time" : "0.58",
+				"position" : 11
+			},
+			{
+				"time" : "0.32",
+				"position" : 10
+			},
+			{
+				"time" : "2.26",
+				"position" : 10
+			},
+			{
+				"time" : "0.25",
+				"position" : 13
+			},
+			{
+				"time" : "0.40",
+				"position" : 10
+			},
+			{
+				"time" : "1.44",
+				"position" : 4
+			},
+			{
+				"time" : "0.49",
+				"position" : 13
+			},
+			{
+				"time" : "0.59",
+				"position" : 13
+			},
+			{
+				"time" : "0.46",
+				"position" : 7
+			},
+			{
+				"time" : "0.35",
+				"position" : 11
+			},
+			{
+				"time" : "1.16",
+				"position" : 5
+			},
+			{
+				"time" : "0.38",
+				"position" : 8
+			},
+			{
+				"time" : "0.52",
+				"position" : 11
+			},
+			{
+				"time" : "0.47",
+				"position" : 9
+			}
+		],
+		"city" : "Wrocław",
+		"cumulativeResults" : [
+			{
+				"time" : "1.13",
+				"position" : 6
+			},
+			{
+				"time" : "3.19",
+				"position" : 6
+			},
+			{
+				"time" : "4.19",
+				"position" : 7
+			},
+			{
+				"time" : "5.17",
+				"position" : 7
+			},
+			{
+				"time" : "5.49",
+				"position" : 7
+			},
+			{
+				"time" : "8.15",
+				"position" : 7
+			},
+			{
+				"time" : "8.40",
+				"position" : 7
+			},
+			{
+				"time" : "9.20",
+				"position" : 8
+			},
+			{
+				"time" : "11.04",
+				"position" : 6
+			},
+			{
+				"time" : "11.53",
+				"position" : 6
+			},
+			{
+				"time" : "12.52",
+				"position" : 7
+			},
+			{
+				"time" : "13.38",
+				"position" : 6
+			},
+			{
+				"time" : "14.13",
+				"position" : 6
+			},
+			{
+				"time" : "15.29",
+				"position" : 7
+			},
+			{
+				"time" : "16.07",
+				"position" : 7
+			},
+			{
+				"time" : "16.59",
+				"position" : 6
+			},
+			{
+				"time" : "17.46",
+				"position" : 6
+			}
+		]
+	},
+	{
+		"position" : 7,
+		"competitor" : "Stanisław Anonim",
+		"total" : "25.30",
+		"delay" : "+5.06",
+		"segmentResults" : [
+			{
+				"time" : "1.15",
+				"position" : 8
+			},
+			{
+				"time" : "2.33",
+				"position" : 22
+			},
+			{
+				"time" : "0.58",
+				"position" : 6
+			},
+			{
+				"time" : "0.58",
+				"position" : 11
+			},
+			{
+				"time" : "0.33",
+				"position" : 14
+			},
+			{
+				"time" : "2.21",
+				"position" : 8
+			},
+			{
+				"time" : "0.26",
+				"position" : 15
+			},
+			{
+				"time" : "0.40",
+				"position" : 10
+			},
+			{
+				"time" : "1.51",
+				"position" : 10
+			},
+			{
+				"time" : "0.49",
+				"position" : 13
+			},
+			{
+				"time" : "0.56",
+				"position" : 9
+			},
+			{
+				"time" : "0.51",
+				"position" : 11
+			},
+			{
+				"time" : "0.31",
+				"position" : 7
+			},
+			{
+				"time" : "1.29",
+				"position" : 18
+			},
+			{
+				"time" : "0.36",
+				"position" : 3
+			},
+			{
+				"time" : "0.50",
+				"position" : 5
+			},
+			{
+				"time" : "0.45",
+				"position" : 4
+			}
+		],
+		"city" : "Wrocław",
+		"cumulativeResults" : [
+			{
+				"time" : "1.15",
+				"position" : 8
+			},
+			{
+				"time" : "3.48",
+				"position" : 16
+			},
+			{
+				"time" : "4.46",
+				"position" : 12
+			},
+			{
+				"time" : "5.44",
+				"position" : 12
+			},
+			{
+				"time" : "6.17",
+				"position" : 12
+			},
+			{
+				"time" : "8.38",
+				"position" : 11
+			},
+			{
+				"time" : "9.04",
+				"position" : 12
+			},
+			{
+				"time" : "9.44",
+				"position" : 11
+			},
+			{
+				"time" : "11.35",
+				"position" : 10
+			},
+			{
+				"time" : "12.24",
+				"position" : 10
+			},
+			{
+				"time" : "13.20",
+				"position" : 10
+			},
+			{
+				"time" : "14.11",
+				"position" : 10
+			},
+			{
+				"time" : "14.42",
+				"position" : 10
+			},
+			{
+				"time" : "16.11",
+				"position" : 10
+			},
+			{
+				"time" : "16.47",
+				"position" : 10
+			},
+			{
+				"time" : "17.37",
+				"position" : 9
+			},
+			{
+				"time" : "18.22",
+				"position" : 8
+			}
+		]
+	},
+	{
+		"position" : 8,
+		"competitor" : "Mikołaj Anonim",
+		"total" : "25.52",
+		"delay" : "+5.28",
+		"segmentResults" : [
+			{
+				"time" : "1.23",
+				"position" : 11
+			},
+			{
+				"time" : "2.19",
+				"position" : 14
+			},
+			{
+				"time" : "0.59",
+				"position" : 9
+			},
+			{
+				"time" : "0.53",
+				"position" : 7
+			},
+			{
+				"time" : "0.29",
+				"position" : 5
+			},
+			{
+				"time" : "2.13",
+				"position" : 4
+			},
+			{
+				"time" : "0.26",
+				"position" : 15
+			},
+			{
+				"time" : "0.37",
+				"position" : 4
+			},
+			{
+				"time" : "1.58",
+				"position" : 14
+			},
+			{
+				"time" : "0.43",
+				"position" : 6
+			},
+			{
+				"time" : "0.57",
+				"position" : 12
+			},
+			{
+				"time" : "0.45",
+				"position" : 4
+			},
+			{
+				"time" : "0.45",
+				"position" : 38
+			},
+			{
+				"time" : "1.15",
+				"position" : 4
+			},
+			{
+				"time" : "0.59",
+				"position" : 46
+			},
+			{
+				"time" : "0.55",
+				"position" : 15
+			},
+			{
+				"time" : "0.46",
+				"position" : 6
+			}
+		],
+		"city" : "Wrocław",
+		"cumulativeResults" : [
+			{
+				"time" : "1.23",
+				"position" : 11
+			},
+			{
+				"time" : "3.42",
+				"position" : 11
+			},
+			{
+				"time" : "4.41",
+				"position" : 10
+			},
+			{
+				"time" : "5.34",
+				"position" : 9
+			},
+			{
+				"time" : "6.03",
+				"position" : 8
+			},
+			{
+				"time" : "8.16",
+				"position" : 8
+			},
+			{
+				"time" : "8.42",
+				"position" : 8
+			},
+			{
+				"time" : "9.19",
+				"position" : 7
+			},
+			{
+				"time" : "11.17",
+				"position" : 9
+			},
+			{
+				"time" : "12.00",
+				"position" : 9
+			},
+			{
+				"time" : "12.57",
+				"position" : 9
+			},
+			{
+				"time" : "13.42",
+				"position" : 7
+			},
+			{
+				"time" : "14.27",
+				"position" : 9
+			},
+			{
+				"time" : "15.42",
+				"position" : 8
+			},
+			{
+				"time" : "16.41",
+				"position" : 9
+			},
+			{
+				"time" : "17.36",
+				"position" : 8
+			},
+			{
+				"time" : "18.22",
+				"position" : 8
+			}
+		]
+	}
+]}
