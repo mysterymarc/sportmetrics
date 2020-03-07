@@ -106,7 +106,7 @@ Application frontend is built on JSP with Bootstrap support.
 
 Minimum Java version is 8. 
 
-Before application launch PostgreSQL server should be setup.
+Before application launch PostgreSQL server should be available (via Docker container or standard installation).
 It is required to have separated database with name "sportmetrics". It is recommended
 to create new user/role for this application. From default it's name and pass is springapp,
 however it can be configured by application.properties. This role should be an owner of sportmetrics 
@@ -115,4 +115,4 @@ db. Db scheme will be created by jpa automatically with first run.
 Application is built to the war archive which can be easily deployed in a standard way. 
 
 For development purposes it is recommended to configure development environment as Spring Boot App.
-However as maven project it can be easy build to war archive and independently deployed as JAR application.
+However as Maven project it can be easy build to war archive and independently deployed as JAR application.
